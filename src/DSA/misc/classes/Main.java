@@ -6,6 +6,8 @@ public class Main {
         Cookie cookieOne = new Cookie("green");
         Cookie cookieTwo = new Cookie("blue");
 
+        cookieOne.setColor("yellow");
+
         System.out.println(cookieOne.getCOlor());
         System.out.println(cookieTwo.getCOlor());
     }
