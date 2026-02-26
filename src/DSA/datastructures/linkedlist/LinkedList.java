@@ -148,5 +148,48 @@ public class LinkedList {
         }
         return false;
     }
+
+
+
+    //Insert
+    public boolean insert(int index, int value) {
+        if (index < 0 || index > length) return false; // as we cagain cannot insert at -1 or greater than length of LL but yes we can prepend and append
+        if(index == 0){
+            prepend(value);
+            return true;
+        }
+        if(index == length){
+            append(value);
+            return true;
+        }
+
+        //In case of insertion at middle ?
+        Node newNode = new Node(value); // new node will be created which we will insert in LL
+        Node temp = get(index - 1); //cuz where ever we want to insert in middle, we need to know the index of node before 
+        newNode.next = temp.next; // now that newly created node is pointing to same node where temp.next is pointing
+        temp.next = newNode; // now temp.next is pointing to newNode
+        length++;
+        return true;
+            
+        
+    }
+
+
+    //Remove method
+    public Node remove(int index){
+        if (index < 0 || index >= length) return null;
+        if (index == 0) return removeFirst();
+        if (index == length - 1) return removeLast(); // using removeLast directly in return as this method returntype is also same as remove i.e node
+
+        Node prev = get(index - 1);
+        Node temp = prev.next; // cuz its O(1)
+
+        prev.next = temp.next;
+        temp.next = null;
+        length--;
+
+        return temp;
+    }
+    
     
 }

@@ -9,6 +9,7 @@ public class Main {
         //LinkedList myLinkedList = new LinkedList(2);
         //LinkedList myLinkedList = new LinkedList(0);
         LinkedList myLinkedList = new LinkedList(11);
+        //LinkedList myLinkedList = new LinkedList(0);
 
 
         //myLinkedList.getHead();
@@ -51,7 +52,13 @@ public class Main {
         myLinkedList.append(23);
         myLinkedList.append(7);
 
-        myLinkedList.set(1, 4);
+        //myLinkedList.set(1, 4);
+
+        //myLinkedList.append(2);
+
+        //myLinkedList.insert(1, 1);
+
+        myLinkedList.remove(2);
 
         myLinkedList.printList();
 
