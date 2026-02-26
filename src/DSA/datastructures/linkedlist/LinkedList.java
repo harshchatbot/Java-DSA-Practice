@@ -124,5 +124,29 @@ public class LinkedList {
 
         return temp;
     }
+
+
+
+    //Get 
+    public Node get(int index) {
+        if (index < 0 || index>= length) return null; // means that index cannot be less that 0 i.e negative 1 and cannot be more than length of the LL
+        Node temp = head;
+        for(int i=0; i< index; i++){
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    //Set 
+    public boolean set(int index , int value) {
+        
+        Node temp = get(index);
+        if (temp != null){
+            temp.value = value;
+            return true;
+
+        }
+        return false;
+    }
     
 }

@@ -6,7 +6,10 @@ public class Main {
 
         //LinkedList myLinkedList = new LinkedList(4);
         //LinkedList myLinkedList = new LinkedList(1);
-        LinkedList myLinkedList = new LinkedList(2);
+        //LinkedList myLinkedList = new LinkedList(2);
+        //LinkedList myLinkedList = new LinkedList(0);
+        LinkedList myLinkedList = new LinkedList(11);
+
 
         //myLinkedList.getHead();
         //myLinkedList.getTail();
@@ -15,7 +18,7 @@ public class Main {
         //call append method to append value 2 after 4 or 1 as u wish the first value
         //myLinkedList.append(2);
         //myLinkedList.append(3);
-        myLinkedList.append(2);
+        //myLinkedList.append(2);
 
         //myLinkedList.printList(); commented in removeLast method scenario
 
@@ -31,11 +34,26 @@ public class Main {
         //myLinkedList.printList();
 
         // 2 items - returns 2 node
-        System.out.println(myLinkedList.removeFirst().value);
+        //System.out.println(myLinkedList.removeFirst().value);
         // 1 item - returns 1 node
-        System.out.println(myLinkedList.removeFirst().value);
+        //System.out.println(myLinkedList.removeFirst().value);
         // 0 items - returns null
-        System.out.println(myLinkedList.removeFirst());
+        //System.out.println(myLinkedList.removeFirst());
+
+
+        //myLinkedList.append(1);
+        //myLinkedList.append(2);
+        //myLinkedList.append(3);
+
+        //System.out.println(myLinkedList.get(2).value + "\n");
+
+        myLinkedList.append(3);
+        myLinkedList.append(23);
+        myLinkedList.append(7);
+
+        myLinkedList.set(1, 4);
+
+        myLinkedList.printList();
 
 
     }
