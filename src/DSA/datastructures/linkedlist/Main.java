@@ -10,6 +10,9 @@ public class Main {
         myLinkedList.getTail();
         myLinkedList.getLength();
 
+        //call append method to append value 2 after 4 or 1 as u wish the first value
+        myLinkedList.append(2);
+
         myLinkedList.printList();
 
     }
