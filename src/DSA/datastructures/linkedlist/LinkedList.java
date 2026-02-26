@@ -240,8 +240,9 @@ public class LinkedList {
             fast = fast.next; // step 1
             if (fast != null) {
                 fast = fast.next; // step 2
+                slow = slow.next; // +1 steps
             }
-            slow = slow.next; // +1 steps
+            
 
         }
 
