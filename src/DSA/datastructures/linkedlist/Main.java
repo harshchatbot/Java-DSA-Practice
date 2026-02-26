@@ -5,10 +5,10 @@ public class Main {
     public static void main (String[] args) {
 
         //LinkedList myLinkedList = new LinkedList(4);
-        //LinkedList myLinkedList = new LinkedList(1);
+        LinkedList myLinkedList = new LinkedList(1);
         //LinkedList myLinkedList = new LinkedList(2);
         //LinkedList myLinkedList = new LinkedList(0);
-        LinkedList myLinkedList = new LinkedList(11);
+        //LinkedList myLinkedList = new LinkedList(11);
         //LinkedList myLinkedList = new LinkedList(0);
 
 
@@ -43,14 +43,15 @@ public class Main {
 
 
         //myLinkedList.append(1);
-        //myLinkedList.append(2);
-        //myLinkedList.append(3);
+        myLinkedList.append(2);
+        myLinkedList.append(3);
+        myLinkedList.append(4);
 
         //System.out.println(myLinkedList.get(2).value + "\n");
 
-        myLinkedList.append(3);
-        myLinkedList.append(23);
-        myLinkedList.append(7);
+        //myLinkedList.append(3);
+        //myLinkedList.append(23);
+        //myLinkedList.append(7);
 
         //myLinkedList.set(1, 4);
 
@@ -58,7 +59,9 @@ public class Main {
 
         //myLinkedList.insert(1, 1);
 
-        myLinkedList.remove(2);
+        //myLinkedList.remove(2);
+
+        myLinkedList.reverse();
 
         myLinkedList.printList();
 
