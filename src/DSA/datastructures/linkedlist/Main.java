@@ -43,9 +43,9 @@ public class Main {
 
 
         //myLinkedList.append(1);
-        myLinkedList.append(2);
-        myLinkedList.append(3);
-        myLinkedList.append(4);
+        //myLinkedList.append(2);
+        //myLinkedList.append(3);
+        //myLinkedList.append(4);
 
         //System.out.println(myLinkedList.get(2).value + "\n");
 
@@ -61,7 +61,14 @@ public class Main {
 
         //myLinkedList.remove(2);
 
-        myLinkedList.reverse();
+        //myLinkedList.reverse();
+
+        myLinkedList.append(34);
+        myLinkedList.append(44);
+        myLinkedList.append(54);
+        //myLinkedList.append(88);
+
+        System.out.println("Middle Node is : " + myLinkedList.findMiddleNode().value);
 
         myLinkedList.printList();
 
