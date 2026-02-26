@@ -105,5 +105,24 @@ public class LinkedList {
 
         length++;
     }
+
+
+    //Removing first item from the list here also 3 edge cases.
+    public Node removeFirst(){
+        if(length == 0) return null;  //scenario 1
+        Node temp = head;
+        head = head.next;
+        temp.next = null;
+        length--;
+        
+
+        //scenario 2 where LL is of only 1 length then if we remove that last node then head and tail should point to null
+        if(length == 0){
+            //head = null; not required here as head is already set to null
+            tail = null;
+        }
+
+        return temp;
+    }
     
 }
