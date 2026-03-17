@@ -260,4 +260,14 @@ public class LinkedList {
 
     }
 
+
+
+    /* Has Loop ( ** Interview Question) */
+    public boolean hasLoop(){
+        return true;
+    }
+
+
+
+
 }
