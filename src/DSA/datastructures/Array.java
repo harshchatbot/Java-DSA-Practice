@@ -50,7 +50,7 @@ public class Array {
         int largest = arr4[arr4.length - 1];
         System.out.println("largest number in array : " + largest);
 
-        for(int i = arr4.length -2; i <= arr4.length; i--){
+        for(int i = arr4.length -2; i >= 0; i--){
             if(arr4[i] < largest){
                 
                 System.out.println("Second largest number in array : " + arr4[i]);
