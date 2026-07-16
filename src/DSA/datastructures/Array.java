@@ -21,20 +21,45 @@ public class Array {
             System.out.println("Array loop : " + arr2[i]);
         }
 
-        //lets find out the second largest number in the array
 
         //lets swap
         int arrSwap[] = new int[]{1,2,3,4,5};
         swap(arrSwap, 0,1 );
         System.out.println("swapped array : " +  Arrays.toString(arrSwap));
 
+
+
+        //secondLargest
+        int arr4[] = {22,12,44,8,66,66}; 
+        secondLargest(arr4);
         
     }
 
+    //swap function
     static void swap(int[] arr3 , int i , int j){
         int temp = arr3[i];
         arr3[i] = arr3[j];
         arr3[j] = temp;
 
     }
+
+    //find 2nd largest num. in array
+    static void secondLargest(int[] arr4){
+        Arrays.sort(arr4); // sort array in ascending order
+        //if repeated numb edge case handle
+        int largest = arr4[arr4.length - 1];
+        System.out.println("largest number in array : " + largest);
+
+        for(int i = arr4.length -2; i <= arr4.length; i--){
+            if(arr4[i] < largest){
+                
+                System.out.println("Second largest number in array : " + arr4[i]);
+                break;
+
+            }
+
+        }
+        System.out.println("Second largest array : " + Arrays.toString(arr4));
+    }
+
 }
