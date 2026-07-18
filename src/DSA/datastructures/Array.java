@@ -60,6 +60,42 @@ public class Array {
 
         }
         System.out.println("Second largest array : " + Arrays.toString(arr4));
+
+        //DNF algo
+        int[] colors = {1, 1, 2, 2, 0, 1, 2, 2, 1};
+        sortColors(colors);
+        System.out.println("DNF algo : "+ Arrays.toString(colors));
+
     }
+
+
+
+    //Sort Colors problem, commonly solved in-place using Dijkstra’s Dutch National Flag approach.
+    static void sortColors(int[] nums){
+
+        int low = 0;
+        int mid = 0;
+        int high = nums.length -1;
+
+        while( mid <= high){
+
+            if(nums[mid] == 0){
+                swap(nums, mid, low);
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 1){
+                mid++;
+            }
+            else {
+                swap(nums, mid, high);
+                high--;
+            }
+
+        }
+
+    }
+    
+
 
 }
