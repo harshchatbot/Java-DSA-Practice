@@ -66,6 +66,17 @@ public class Array {
         sortColors(colors);
         System.out.println("DNF algo : "+ Arrays.toString(colors));
 
+
+
+        //Majority Element
+        int[] majorityArr = {3, 3, 0, 3, 1, 3, 2}; // with majority element
+        //int[] majorityArr = {3, 3, 0, 1, 1, 3, 2}; //without majority element
+        majorityElement(majorityArr);
+
+
+
+        //Maximum Subarray
+
     }
 
 
@@ -93,6 +104,56 @@ public class Array {
             }
 
         }
+
+    }
+
+
+    //Majority element : Given an array, find the element that appears more than n / 2 times.
+    static void majorityElement(int[] majorityArr) {
+        //here n = 7
+        //Arrays.sort(majorityArr); //if using boyer-moore voting algo then this sort is not required
+        System.out.println("Sorted Majority Array : " + Arrays.toString(majorityArr));
+
+        //find middle element
+        int middleIndex = majorityArr.length / 2;
+        System.out.println("Middle num : "+ majorityArr[middleIndex]);
+
+        //but the best approach to do this is by using : Boyer–Moore Voting Algorithm
+        //Boyer–Moore works by cancelling one majority candidate against one different element.
+
+        //we need two variables
+        int candidate = 0;
+        int count = 0;
+        int candidateCount = 0;
+
+        for(int i = 0; i< majorityArr.length; i++){
+            if(count == 0){
+                candidate = majorityArr[i];
+                
+            } 
+
+            if(majorityArr[i] == candidate){
+                count++;
+            } else {
+                count--;
+
+            }
+
+    }
+
+    System.out.println("Majority Element : " + candidate);
+
+        for(int i =0; i<majorityArr.length; i++){
+            if(majorityArr[i] == candidate){
+                candidateCount++;
+            }
+        }
+
+        if(candidateCount > majorityArr.length / 2){
+            System.out.println("We do have a majority element");
+        }else {
+            System.out.println("There is no majority element");
+        }    
 
     }
     
