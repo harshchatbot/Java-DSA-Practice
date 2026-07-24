@@ -76,6 +76,8 @@ public class Array {
 
 
         //Maximum Subarray
+        int[] subArr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println("Maximum Subarray : " + maxSubArray(subArr));
 
     }
 
@@ -155,6 +157,24 @@ public class Array {
             System.out.println("There is no majority element");
         }    
 
+    }
+
+
+
+    public static int maxSubArray(int[] subArr){
+
+        //Kadane’s algorithm
+        var currentSum = subArr[0]; //Why initialize using nums[0] instead of 0? .Because this also handles arrays containing only negative numbers,
+        var maximumSum = subArr[0];
+
+        for(int i =1;i<subArr.length; i++){
+            //Math.max(a, b)
+            currentSum = Math.max(subArr[i], currentSum + subArr[i]);
+            maximumSum = Math.max(maximumSum , currentSum);
+
+        }
+
+        return maximumSum;
     }
     
 
