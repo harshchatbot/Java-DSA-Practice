@@ -79,6 +79,30 @@ public class Array {
         int[] subArr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println("Maximum Subarray : " + maxSubArray(subArr));
 
+
+
+        //Maximum Sum Circular Subarray.
+        //for later.....
+
+
+        //2D array eg.
+        int[][] arrayTwoD = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+
+        //arr[row][column]
+        System.out.println("2D array 0,0 : " + arrayTwoD[0][0]);
+        System.out.println("2D array 2,2 : " + arrayTwoD[2][2]);
+
+        //now useing loop
+        for(int i =0; i < arrayTwoD.length; i++){
+            for(int j =0; j<arrayTwoD[i].length; j++){
+                System.out.println("2D array loop : " + arrayTwoD[i][j]);
+            }
+        }
+
     }
 
 
