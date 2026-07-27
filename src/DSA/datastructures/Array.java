@@ -103,6 +103,11 @@ public class Array {
             }
         }
 
+
+
+        //maxmin 2d array
+        printSpiralTraversal();
+
     }
 
 
@@ -201,6 +206,72 @@ public class Array {
         return maximumSum;
     }
     
+
+    public static void printSpiralTraversal(){
+        //print in spiral order
+        //we have a 4 by 6 2d matrix and lets  find max row and column and min row and column
+        int[][] arr = {
+            {4, 2, 8, 1, 5, 7},
+            {9, 3, 6, 4, 2, 8},
+            {5, 7, 1, 9, 3, 6},
+            {8, 4, 2, 7, 6, 1}
+        };
+
+        for(int i =0; i<arr.length; i++){
+            for(int j =0;j< arr[i].length; j++){
+                //System.out.println("Array output : "+ arr[i][j]); 
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+
+        }
+
+
+
+        int minr = 0;
+        int minc = 0;
+        int maxr = arr.length - 1;
+        int maxc = arr[0].length - 1;
+        int te = arr.length * arr[0].length;
+        int count = 0;
+
+
+        System.out.println("Spiral traversal:");
+
+        while (count < te) {
+
+            // Left wall: top to bottom
+            for (int i = minr, j = minc; i <= maxr && count < te; i++) {
+                System.out.print(arr[i][j] + " ");
+                count++;
+            }
+            minc++;
+        
+            // Bottom wall: left to right
+            for (int i = maxr, j = minc; j <= maxc && count < te; j++) {
+                System.out.print(arr[i][j] + " ");
+                count++;
+            }
+            maxr--;
+        
+            // Right wall: bottom to top
+            for (int i = maxr, j = maxc; i >= minr && count < te; i--) {
+                System.out.print(arr[i][j] + " ");
+                count++;
+            }
+            maxc--;
+        
+            // Top wall: right to left
+            for (int i = minr, j = maxc; j >= minc && count < te; j--) {
+                System.out.print(arr[i][j] + " ");
+                count++;
+            }
+            minr++;
+        }
+
+        System.out.println();
+
+    }
 
 
 }
