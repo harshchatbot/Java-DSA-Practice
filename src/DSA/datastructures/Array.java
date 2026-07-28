@@ -108,6 +108,9 @@ public class Array {
         //maxmin 2d array
         printSpiralTraversal();
 
+        //diagonal traversal
+        diagonalTraversal();
+
     }
 
 
@@ -270,6 +273,41 @@ public class Array {
         }
 
         System.out.println();
+
+    }
+
+
+
+    public static void diagonalTraversal(){
+
+        int[][] arr = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        System.out.println("Diagonal traversal:");
+        //For a matrix with rows and columns, the number of diagonals is:
+        //rows + columns - 1
+
+        int rows = arr.length;
+        int col = arr[0].length;
+        int totalDiagonals = rows + col - 1;
+
+        for(int diagonal = 0; diagonal < totalDiagonals; diagonal++){
+            for(int i =0; i < rows; i++){
+                for(int j =0; j < col; j++){
+                    if(i+j == diagonal){
+                        System.out.print(arr[i][j] + " ");
+                    }
+                }
+
+            }
+        }
+
+        System.out.println();
+
+        //This above solution is good for understanding, but its time complexity is higher because, for every diagonal, it scans the entire matrix.
 
     }
 
