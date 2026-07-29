@@ -107,3 +107,92 @@ sorting algo's:
 cuz when dealing with millions of data we have to find the optimum way to do things
 
 
+Another type of data structures are Dynamic
+
+Dynamic one's:
+1.Linkedid List
+2.Stack
+3.Queue
+
+Linkedlist : stores dynamic data
+                            Node
+here we have nodes [stores value, pointer to next node]
+
+it also provides non-continuous links like node 1 can point to node 3000 also
+
+types:
+1.Singly Linkedlist
+2.Doubly Linkedlist
+3.Singly Circular
+4.DOubly Linkedlist
+
+
+
+Stack - Like pile of books
+
+
+b5
+b4
+b3
+b2
+b1
+
+
+if we have to pick last book so we have to remove top book and so on....
+
+So ,  stack works in LIFO manner
+
+
+
+Now reverse of this is a Queue : eg a voting system
+
+Person1 Person2 Person3 Person4  ->  [Vote box]
+
+so they are in a queue and the user who came 1st will vote first and so on.
+
+
+
+
+Then we have TREES : non-linear data structure :
+
+     PC1
+  PC2   PC3
+PC4 PC5   PC6
+
+
+SO this is tree data structure where ring is open 
+
+
+if the ring is closed and they have a cross connection also then it will become a GRAPH
+graph is heavily used in social media networks
+
+like a network of people
+
+
+
+
+
+
+
+
+//////////////
+LL,STACK,QUEUE,MAP
+
+
+LL : it has nodes
+
+N1 -> N2 -> N3
+
+Types: 
+1. SIngly LL : means where we have connection in a single direction only
+
+
+2.Doubly LL :  here we have two pointers(P1,P2) unlice singly where the node has single pointer(P1)
+
+so P1 connects to previous node and P2 connects to the next node hence this is a bidirectional
+
+3.Circular Singly LL : 
+
+when the last node is connected to the first node so it becomes a circular LL so from last  node we are able to access 1st node
+
+4.Circular Doubly LL: here also first node connected to last node and last node connected to first node.
