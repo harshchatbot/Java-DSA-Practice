@@ -1,0 +1,109 @@
+Data structures & Algorithm
+
+Means data structure store the data and algorithms are used to optimally perform operations on that data.
+
+
+Arrays - Overlapping Intervals
+
+arrays 1d and 2d arrays
+
+so in Overlapping intervals first thing we have to do is to sort the intervals based on timeline
+
+eg.
+
+there are events ok
+S1   E1
+1----3
+    2-----6
+            8-----10
+                    15-----18
+
+we can se 2 is Overlapping
+
+s and e are start and end of an event so whenever we have the start of the next event is lesser than end of 1st event then this indicates the overlapping intervals
+all other cases are non overlapping
+
+so here one way is we can merge the events
+
+so {1,3}
+min{s1,s2}
+max{1,6}
+
+Second Pattern is - Prefix Sum
+
+when data is flowing we have to give cumulative sum where we have to store some at different points and give a cumulative sum
+
+eg Lucky Draw
+
+one question : Find middle index in Array
+[2,3,-1,8,4]
+
+find index where both side of sums is equal
+
+so 1st we find total sum -> 16
+
+so use cumulative sum
+
+another approach is - Two Pointer Approach - we use two pointers to traverse the arrays.
+it is majorly used in finding sub-arrays etc
+                                [2,7,11,15], lets say our target is to find numbers whose sum = 9
+here also we have 2 situations like array is sorted or not sorted
+
+in not sorted we will use map
+
+Matrix (2D) array - Rotate Image question :
+
+
+125                         741
+456 -> rotate clockwise ->  852
+789                         965
+
+so this concept is transpose oof a Matrix
+
+
+so 1.transpose the Matrix then 2. reversing the rows
+
+
+In Matrix or array we do a lot of searching :
+
+2 types of searching
+1.Linear
+2.Binary search
+
+Linear search :
+
+{1,2,3,4,5}
+
+find the value 4
+we will go to each number and find the value 4
+
+Binar search :  applied on sorted array
+
+{1,2,3,4,5}
+
+binary search says - Divide & Rule Technique
+
+so it find the mid first
+and then in mid its 3, and since 3 < 4 so we can discard the left side compeletely
+
+and then we will find again divide and find mid
+
+
+Next,
+
+Sorting the array - arranging the elements in increasing or decreasing order
+
+sorting algo's:
+1.Insertion sort
+2.Selection Sorting
+3.Buble sort
+4.Merge sort
+5.Quick sort
+6.CYclic sort
+7.Counting sort
+8.Redix sort
+
+
+cuz when dealing with millions of data we have to find the optimum way to do things
+
+
