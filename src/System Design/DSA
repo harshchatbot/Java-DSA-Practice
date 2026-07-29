@@ -196,3 +196,38 @@ so P1 connects to previous node and P2 connects to the next node hence this is a
 when the last node is connected to the first node so it becomes a circular LL so from last  node we are able to access 1st node
 
 4.Circular Doubly LL: here also first node connected to last node and last node connected to first node.
+
+
+
+**in LL lots of problems can be resolved by slow and fast pointer approach
+
+lets say we have some LL and we want to find the middle one
+
+so how? cannot do size by 2 as size in unknown
+
+approach 1 : find the size of the LL
+-access each element and maintain a count and then we can do size/2
+i.e find size of ll by traversing the entire ll
+
+--but this approach is not otimized
+
+
+approach 2 : fast and slow pointer approach
+
+here we place 2 pointers :
+p1 move by +1 step and p2 move by +2 steps
+
+
+
+
+How to find a palindromic LL??
+the number is same even if its reversed
+
+1.find mid (using slow  fast pointer )
+2.reverse
+3.Compare
+
+
+
+
+
