@@ -228,6 +228,70 @@ the number is same even if its reversed
 3.Compare
 
 
+lets say we have 5 nodes now how to reverse LL ?
+
+iw we reverse the direct or reverse the pointer we can find rev no.
+
+1. current node = head
+previous node = null
+next = 
 
 
+
+Stack :
+-here we store numbers in a LIFO manner
+
+used in lots of places like computer memory , in recursion 
+
+Question : Parenthesis problems
+
+lets say we have this parenthesis -> {{()}}
+
+we also want to see the Order and Ordering matters a lot.
+
+Another place where we use stack is Recursion.
+Recursion -> a method/function calling itslef is a recursive method/function
+
+
+
+
+
+
+
+
+
+
+QUEUE : its FIFO
+
+Its use3d in voting system, ticketing system, A scheduler , Tree/graph
+
+Types:
+1.Simple queue
+2.Deque (doubly ended queue)
+3.Priority Queue
+
+
+
+
+
+
+
+Map Data Structure :
+
+It stores key-value pairs.
+in map searching is very optimized
+
+
+
+
+
+Now, lets talk about Non-Linear discard
+
+
+1.Tree
+2.graph
+
+
+
+Tree :
 
