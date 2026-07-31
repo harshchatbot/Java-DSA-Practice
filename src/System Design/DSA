@@ -295,8 +295,84 @@ Now, lets talk about Non-Linear discard
 
 Tree :
 
+Below is N-tree as n nodes
+
             p1
     P2              P3 
 P4     P5      P6  P7  P8
+
+It has single direction
+
+Most used type of tree : Binary Tree
+here we actually restrict that max 2 nodes will be connected  like P2 -> P4
+                                                                    |
+                                                                   P5  
+
+in binary tree we have max 2 nodes
+
+any part of the tree can be called sub-tree
+
+now there are varius types of binary tree:
+1.Perfect binary tree : where every node will be having 2 children
+2.Binary Search Tree : 
+
+
+
+3.Balanced tree : 
+
+
+
+Red-Black Tree
+
+How to traverse or do search in a binary tree:
+
+                1
+               2    3 
+            4   5  6  7
+
+
+Traversal can be of two types:
+
+1.Depth First Search (DFS)
+2.Breadth First Search (BFS)
+
+
+DFS:
+types :
+1.Pre order Traversal - first root then left then right
+2.In-order Traversal - left then root then right
+3.Post-order traversal - left then right then root
+
+in DFS we utilize STACK
+
+
+BFS : here we utilize QUEUE
+
+
+
+
+Now lets say we have a tree and we need to search a node?
+
+we can do it by DFS or BFS both can works
+or lets say someone ask us to print the top view, left view, right view of bottom view of the binary tree?
+
+
+SKEWED binary tree :
+
+when there are either left nodes or either right nodes
+
+although its not much preferable binary tree thats why we always balance the binary tree
+so we can do optimization on the structure of such binary trees and then its called a balanced binary tree
+
+so what is balanced binary tree = height of left subtree - ht of right subtree cannot be greator than 1
+
+
+
+
+
+
+
+
+
 
 
