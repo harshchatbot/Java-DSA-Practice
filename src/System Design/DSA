@@ -533,6 +533,42 @@ So before designing any App or Site we need to think How It Is Working?
 then we think of the system design.
 
 
+********************************* SYSTEM DESIGN ****************************************
+System design -> Design scalable systems
+
+
+How to prepare for System design interview 
+
+Learn about Components like :
+-CDN
+-Databases
+-Load Balancers
+-Messaging Queues
+-Gateways
+-Flows
+....
+
+ALso,
+
+how to calculate 
+-Latency
+-Throughput
+-Message size
+-Produce Rate
+-Consume Rate
+-DB size
+-Memory size
+....
+
+
+After this we can start with desing like :
+-Rate Limiter
+-Book My show
+-Consistent hashing concept
+-Unique id generator
+-Netflix
+-You tube
+
 
 
 
