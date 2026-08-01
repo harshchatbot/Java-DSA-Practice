@@ -441,3 +441,99 @@ But, Graph is not a Tree but Tree is a Graph.
 
 
 
+
+
+
+<--------------------------------------------------------------------------------
+<-------------------------------------------------------------------------------------
+
+
+
+Time to Learn System design.
+
+
+
+WHAT?
+
+Process of defining below as per the requirement :
+
+A system can have below:
+-Architecture
+-Components
+-Modules
+-Interface
+-Data Flow
+
+
+
+Design : We will be designing when there will be specific set of requirement , we design a system using above things.
+
+
+
+WHY?
+
+Amazon - 1mn users / Second
+Another site Tutedude - 100 users / Second but later users will increase
+
+
+-Scalability
+-Performance
+-Reliability
+-Maintainability
+-Cost Efficient
+
+
+USE-CASE :
+
+eg a social media app - 
+in app what may be required:
+-Real time data/feed
+-User handling
+-Storage
+-User-Relationship
+-Notification
+
+
+now Amazon is an e-commerce site:
+-Product Catalogue
+-Inventory Management
+-Payment Gateway
+-Recommendation System
+-Onboarding of new sellers
+
+
+
+A Ride-Sharing App like ola, uber :
+-Real time geolocation service
+-Pricing Changes
+-Route optimization
+-Real time Tracker
+
+
+
+Lets see How System Design Works ?
+
+lets say there is a req , design a food delivery app - Tute Dude Food (TDF)
+
+1.Always be clear with the requirement
+SO we asked what type of add you want so maybe they said just like swiggy and zomato
+
+so lets see what these apps have :
+-Real time search for restaurants -> we can provide filters as well while searching -> then they select food and Place the order
+-Payment Gateway -> UPI, COD , Card options -> and with upi there can be different kind of apps etc and 
+then in card there can be differenterent offers
+-Real time Order Tracking - how long restaurant will take ? , real time updates if delay ? order is packed like every step Tracking
+
+
+Ok so now after all this can we start coading ????
+
+a BIG NOO, you cannot start coading now as you need a High Level Design(HLL) first....
+
+So before designing any App or Site we need to think How It Is Working?
+then we think of the system design.
+
+
+
+
+
+
