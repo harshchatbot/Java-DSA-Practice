@@ -371,6 +371,37 @@ so what is balanced binary tree = height of left subtree - ht of right subtree c
 
 
 
+Now:
+
+GRAPHS ::
+
+                 1
+              2 -| - 3
+                 4
+
+there are multiple connections and CYCLES and BLOCKERS can be formed
+
+where is this used :
+1. where there is network of people - like mutal connections etc
+Social media, network of roads etc
+
+Types :
+1.Un-directional graph - only in 1 driection , mean from node a->
+2.Directional graph - to and fro is allowed  A <-> B
+3.Cyclic Graph - A -> B -> C -> A
+4.Weighted Graph - 
+
+Now , Representation of Graph :
+
+In coding world we can represent graph as :
+
+1.Adjacency Matrix
+2.Adjacency List
+
+
+
+
+
 
 
 
