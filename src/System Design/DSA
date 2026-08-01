@@ -399,11 +399,45 @@ In coding world we can represent graph as :
 2.Adjacency List
 
 
+Now lets se how traversal happens
+
+DFS:
+to avoid cyclic loop we created a 'Visited array' - the nodes which we have visited.
+
+
+now BFS:
 
 
 
 
 
+-------Imp and must have
+Shortest Path :
+To find shortest path graph provide multiple algorithms
+1.Dijkastra algo
+2.Bellmon-Ford algo
+3.Ford-wal...
+
+used in lots of companies
+like finding cheapest flight price etc
+
+
+
+Ok more things to check :
+
+1.Articulation point
+2.Bridges in graph
+
+then these shortest algorithms
+3.prims algo
+4.Disjoin data structure
+
+
+Tree is a Graph which is connected in a unidirection and the nodes have a Parent-Child concept
+But, Graph is not a Tree but Tree is a Graph.
+
+
+--Make sure we check the time complexity of all these as well.
 
 
 
