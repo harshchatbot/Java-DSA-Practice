@@ -571,5 +571,106 @@ After this we can start with desing like :
 
 
 
+TYPES OF SYSTEMS :
+
+Based on Architecture :
+-Monolithic
+-Distributed
+-Micro Services
+-Serverless
+-Modular/Plugin based system
+
+
+
+*Monolithic :
+everything is in single codebase like the card page , payment process, order placement everything is in that single app single codebase
+usually when we start like startups this architecture only is used.
+
+All functionalities in single codebase
+
+*Distributed - 
+
+System1 (component) running on Machine 1
+System2 (component) running on Machine 2 
+and they both collaborate together to give us a single system
+eg google, zomato
+
+components spread acroos multiple machines/Services
+
+
+**Micro-services - 
+
+A system where you divide it into various services like S1 , S2 , S3
+
+eg we have an e-commerce application
+what all services we be having
+-Product Catalogue-
+-Payment service
+-Cart service
+-Review system
+-Recomendation service
+.......
+
+
+so here we will create a different codebase for each service.
+
+here all services are independent of each other and can be deployed seperately
+
+and they work collaboratively to deliver the output
+
+
+*Serverless -
+Now, we know everything is deployed and running on some server correct?
+
+what if i dont need server? 
+like we create a function which is triggered based on action like clicking a button
+like in AWS...
+
+
+*Plugin based - 
+lugin is like a single thing which is independent and can perform a specific set of work and can be attached
+to any other thing.
+
+eg lot of ide's use plugins
+
+
+Ok now lets see how systems communicate :
+Communication of a system:
+1.Client-Server setup
+2.Peer to Peer communication - eg. BlockChain
+3.Message Driven Communication eg. order placement , by creating messaging queue async
+
+Based on Access and Control 
+-Centralized System
+its easier to manage but point of failure increases as a single system and if it fails.
+
+-De-Centralized 
+data or services are spread out.
+like delhi , banglore , hyd has servers and if clinet is in banglore so banglore server is used.
+
+so its bit complex but prevents single point of failure
+
+
+Based on Deployment types/style :
+-On-Premise eg. Banks
+-Cloud Bases eg. AWS, GCP, AZURE
+-Hybrid
+
+
+Based on Functionalities :
+-Transcational - eg payments in Banks
+-Data Processing System - we have large chunk of data we divide it into chunks of data
+-Real-Time Systems 
+-Batch Systems 
+-Embedded Systems - when a software is tightly with a hardware eg. IOT devices
+
+
+
+
+
+
+
+
+
 
 
