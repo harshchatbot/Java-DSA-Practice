@@ -667,6 +667,51 @@ Based on Functionalities :
 
 
 
+----------------------------------------------------------------------------
+
+Framework of Systedm Design Interviews
+
+There is no perfect design so this interview is actually a collaboration, as if someone asks design google search engine
+so we dont need to think that we desing it like how it is nw which is developed by thousands of developers.
+
+
+Interviewers Mind :
+-How accurately design a system and how you take care of problem system
+-Scope
+-Ask good questions
+-How broadly your thinking
+-Do not do Over-engineering
+-Dont be narrow minded
+-Dont be stubborn
+
+
+4 Step Prcoess to do well in system design interview :
+1.Understanding the problem & establish the Scope
+-Scope Setting :
+This can be done by asking
+Specific features ?
+Num of users ?
+What is the scaling plan in next 3-6 months or year?
+Is there any company predefined Tech stack which we have to leverage ?
+
+
+eg. NEWS FEED SYSTEM:
+ask:
+-what kind of applications is this Mobile/Web or both
+-features - so client/interviewer said like
+ability to make a post and see friends newsfeed
+-WHat is the ordering of your newsfeed like most rect first or reverse chronological order?
+-Number of friends one can have? - interview said lets keep it 5k
+-WHat is the daily traffic ? -intv said 10mn daily active users
+-What feed contains? - intv it can include both images, videos and text
+
+
+so after this we have a clear problem understanding......
+
+
+Step 2 : Propose High Level Design
+
+
 
 
 
