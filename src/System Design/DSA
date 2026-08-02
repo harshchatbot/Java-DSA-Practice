@@ -711,11 +711,104 @@ so after this we have a clear problem understanding......
 
 Step 2 : Propose High Level Design
 
+What is HLD ?
+Ans: Its the initial blu eprint of the design how our Nes feed app will look like
+so that you can draw some box diagrams, how api , cdn , message queues etc
+
+-COmmunication - communicate it well t intv
+-Think out loud
+
+
+News Feed System HLD :
+
+Divide into to major components
+
+-Feed publishing
+-News feed building
+
+
+1.Feed Publishing
+we can have a web browser or a mobile app
+
+i write a post and when i click on post button so there will be an api call out which will post the Consistent
+
+type of application/architecture
+we can follow monolithic or micro-services 
+so intv said lets go with micro services
+
+so it means app will be divided into different parts so parts can be
+-Post service
+-notification service
+-new feed 
+
+so there will be api gateway to handle the api call
+so api gateway will be directing the api call to correct service
+
+then we can have one DB also
+
+so bw post and db we can have a cache as well
+
+post
+ |
+ cache
+ |
+ DB
+
+
+ 2. For News Feed
+
+-open app and visited profile
+-one api call happened and fee loading
+-api gateway
+-we went to news feed service
+-then we have a cache as latest post can be stores here
+-then we have a DB
 
 
 
+3.Design Deep Dive :
+
+-Focus  on individual components
+-scaling
+-intv will give some feedback or improving points so note on that
 
 
 
+Web browser   Mobile App
+
+|
+Api call
+|
+we added Load Balancers to balance the load on web server
+|
+web server (can add authentication also)
+|
+api gateway
+|
+Post service , news feed service , notification service
+|
+cache
+|
+DB1(Graph db) for firends network and DB2(User Data)
+
+
+similarly for post service 
+|
+Post cache
+|
+Post db
+
+this is how we will be expanding our design
+
+
+
+4. Wrap Up
+we can ourslef give potential improvements in our design
+by talking about
+-bottleneck and giving improving points
+-we can gie a recap of the approaches we have talked about
+-some operation issues can be discussed
+-Error handling can be discussed
+-Scaling up
 
 
