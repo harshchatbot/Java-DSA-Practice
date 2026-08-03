@@ -121,8 +121,63 @@ Factors:
 -Performance requirement (if we want system to be up all the time)
 -Avalability requirement
 -Scalability Goal
--
 
 
+
+
+
+************ Reverse Proxy ****************************
+
+we have a single site
+
+all visitor traffic going to main web server, and there are lakhs of requests then the server can crash.
+so how control this so many requests  or security or routing issues , or web server crash
+
+so what usually companies do :
+
+they create a Wall which is reverse proxy wall
+
+
+U1
+
+U2
+
+U3    ->      Proxy Server    -   Web server
+
+U4
+.
+.
+
+
+
+so reverse proxy is a type of a server which acts as a middle layer between user and actual web server
+
+benefits:
+-Security
+-You can limit and decide which req to divert
+-Stop user from firectly accessing backend
+-Traffic filtering
+-Load balancing
+-Performance improvement
+
+
+how this works:
+
+U1
+
+U2
+                IP(own)
+U3    ->      Proxy Server    -   Web servers
+
+U4
+.
+.
+
+in which cases should we use reverse proxy :
+-When we want load balancing
+-security
+-when we want better performance
+-when we want traffic filtering
+-bot??
 
 
