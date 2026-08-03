@@ -94,3 +94,35 @@ User -> API Gateway - Payment gateway    - DB
 
 ************ Horizontal & Vertical Scaling ****************************
 
+Lets say that when we build our app we procured 1TB of database, now after few years the db is almost full ok now i need more space to handle the load so there are 2 ways to do this
+Horizontal nad vertical scaling.
+
+1.Vertical scaling :
+
+Increasing the capacity or capability of any hardware or software component is called vertical scaling.
+
+so if we increase from 1TB -> 2TB its vertical scaling
+
+Major problem or limitation :
+that lets say we can scale upto 10 TB nd cannot go beyond this.
+
+
+Now, if we somehow want to go beyond the 10 TB, then we have to take help of horizontal scaling
+-also known as scaling out
+DB1 + DB2 + DB3 we cann add more db's
+We also get 'Fault Tolerance' , eg in future 1 db gets down but we have other db's like db2 and db3 traffic can be diverted.
+
+cons: its complex and not easy to handle
+
+
+Now, when to use which scaling:
+
+Factors:
+-Performance requirement (if we want system to be up all the time)
+-Avalability requirement
+-Scalability Goal
+-
+
+
+
+
