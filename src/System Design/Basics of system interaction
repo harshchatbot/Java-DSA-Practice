@@ -1,0 +1,96 @@
+***********API Gateway**********
+
+It is kind of a reverse proxy
+It is mostly used in Micro-services architecture
+
+API gateway redirects the request to the correct micro-service/service/server
+
+it can handle authentication
+We can add a load balancer also to the API Gateway
+
+web application
+  |
+API gateway
+|    |    |
+MS1 MS2  MS3
+
+It can be used in monolithic architecture also
+
+
+
+
+
+************HTTP VS HTTPS ****************************
+
+
+        http req
+client <-> Server
+        http req
+
+http -> works at application layer
+
+
+http-Secure -> this works at transport layer
+
+when sending the private data - this encrypt the data and ecrypt at the receviers end
+It uses -> SSL or TLS
+
+
+
+************ REST API ****************************
+
+Representational state transfer api
+
+API - help to communicate bw different systems
+
+Rest uses http methods to perform operations i.e CRUD operations
+
+
+Features:
+-They are stateless
+-Work on Client-Server architecture
+
+
+Http Methods :
+-Get
+-Post
+-Update/PUT
+-Delete
+-Patch (when partial infor needs to be updated like only age )
+
+
+
+************ Monolithic VS Micro-Service Architecture ****************************
+
+1.Monolithic Architecture
+
+it has a single unit for storing entire program
+
+ef we have an e commerce website so 
+
+-shopping UI
+-Payment gateway
+-checkout page
+-order page
+-cart
+-discount service
+.....
+
+it has a single codebase
+
+Users -> LB -> App -> Db
+
+So for simple sites
+
+
+2.Mircoservice arch:
+
+It divides application into different components
+
+                    - Shop UI            - DB, Messaging queue
+User -> API Gateway - Payment gateway    - DB
+                    - Order service      -DB
+
+
+************ Horizontal & Vertical Scaling ****************************
+
