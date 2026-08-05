@@ -16,4 +16,14 @@ File System                             |   Database
   so purpose of database :
   so that we can Store the data , retrieve the data , manipulate the data and manage the data efficiently
 
+  Types of db :
+  1.Relational Database
+  2.Non-Relational Database
+
+            relational     |    Non-Relational
+  1.Store dqta in tables with rows and columns   |  1.Store data in key-value pairs(Redis), document based(MongoDB), column based(Cassandra), graph based(Neo4j)
+  2.Here we can use SQL query language to retrieve the data |  2.Here we can use NoSQL query language to retrieve the data
+  3.Eg MySQL, PostgreSQL, Oracle, SQL Server |  3.Eg MongoDB, Cassandra, Redis, Neo4j
+  
+
   
