@@ -181,3 +181,102 @@ in which cases should we use reverse proxy :
 -bot??
 
 
+
+
+************************* Rate Limiter ****************************
+
+
+
+lets say i am a spammer ok and i am firing continious request at you web server so that it crashes
+
+So rate limiting is limiting the api calls you can do.
+
+Why?
+-to prevent resource starvation which causes Denial of service attack (DOS)
+-to reduce the cost
+-server overload
+
+
+Interview:
+Q: Design a rate Limiter.
+
+1.understand the problem and scope
+few questions we can ask around it
+-what kind of rate limiter you are making?
+as rl can be in client side, or server side or in bw of both
+-what basis rate limiter will depend or throtling will depend?
+like an ip add making so mny requests or user id or some other properties , 
+now if itnv say that your rate limiter should be flexible enough to include all
+-what is the scale? intv: for large num of audiences
+-Distributed environment? intv: yes
+-where you will be putting the rate limiter in your design? if client side then where in the app? intv: may or may not ans
+-User needs to know about this or not?
+
+
+
+req:
+-latency should be low
+-it should use less memory
+-distributed rate limiting we need
+-high fault tolerance should be there
+-accuracy
+
+
+Step2.
+now create HLD
+
+1. unasnwered question : where to put the rate limiter?
+-client side rate limiters
+-server side rate limiters
+-in bw both of them(middleware rate limiter)
+
+
+
+client side rate limiters :
+
+not much a good option as we lose the power to control the rate limiter
+
+
+
+
+server side rate limiters :
+            http req
+client      ---------    Server (Added rate limiter here)
+App/Mobile 
+
+
+Middleware side :
+       http req   (APi Gateway)
+Client --------- Rate Limiter  - Server
+
+
+
+----
+
+response -> 429 (Too many requests)
+
+
+
+
+Now, how to decide where to put Rate limiter????????
+
+Depends on based on our application design
+-Tech stack
+-If we already have an Api Gateway
+-Service based requirement
+-based on business decision 
+
+------
+
+Various Algorithims for Rate Limiter which gives way to design a rate limiter:
+1.Token Bucket
+2.Leaking Bucket
+3.Fixed Window Counter
+4.Sliding Window Log
+5.Sliding Window Counter
+ 
+
+
+
+
+
