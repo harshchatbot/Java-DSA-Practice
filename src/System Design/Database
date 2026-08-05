@@ -1,0 +1,19 @@
+************************* DATABASE ************************
+
+Database - Its an organized collection of data stores electronically
+
+So when database was not there, the data was stored in 'File SYstem'
+
+
+File System                             |   Database
+1.Data storage is Non-SYstematic              Systematic
+2.                                            Efficient
+                                              Managable
+  Manual parsing to get data is req           Getting data using query language is easy
+                                              Relations can be created bw tables
+  Limited Storage                             Scalable
+
+  so purpose of database :
+  so that we can Store the data , retrieve the data , manipulate the data and manage the data efficiently
+
+  
