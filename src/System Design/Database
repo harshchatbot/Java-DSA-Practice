@@ -26,4 +26,81 @@ File System                             |   Database
   3.Eg MySQL, PostgreSQL, Oracle, SQL Server |  3.Eg MongoDB, Cassandra, Redis, Neo4j
   
 
-  
+
+RelationalDatabase we have keys 
+-Primary Key : A unique identifier is know as primary key. eg an Id field in a table.
+-Foreign Key : suppose there is another table and we store its primary in our table eg there is a primary key PersonID in table 2 nd we store this column in our table 1 to link both the tables.
+
+
+-----
+Query : is a set of instruction to perform various crud operations on the table data
+
+----
+Indexing
+
+
+----
+CRUD operations
+
+create
+read
+update
+delete
+
+
+----
+with relational databases comes some properties
+-ACID properties (Atomicity, Consistency, Isolation, Durability)
+
+Atomicity :
+eg a Bank transcation, either transcation should be complete else it should rollback
+
+
+Consistency :
+it ensures the data should be consistent 
+one constraint can be balance cannot go below 0
+
+
+Isolation :
+every tranx should be independent and should not interfere
+
+Durability :
+once tranx completed the data should be commited and account should be updated.
+
+
+
+
+What is transcation ?
+Making certain operations in a single go.
+
+
+
+What is Database Normalization??
+
+Wg a Boy go to 
+1.School - info stored in a db
+2.Sports - this info stores in seperate table
+3.Coaching - this info also separate
+
+here we will see many columns will be column like name will be in all there
+so lets say we created another table called student info where we stored common info
+so it is decomposing complex table into simplier and more managable tables.
+
+so this way it helps reducing Redundency
+it also reduces anamolies like insertion anamoly eg updated add in one table but not in other tables.
+update anamoly eg phone number updated in one table but not in other tables
+deletion anamoly
+
+
+Ok so how to perform normalization??
+we have normal forms to achieve normalization
+1.1st Normal Form (1NF)
+2.2nd Normal Form (2NF)
+3.3rd Normal Form (3NF)
+4.Boyce-Codd Normal Form (BCNF)
+5.4th Normal Form (4NF)
+5.5th Normal Form (5NF)
+
+
+
+
