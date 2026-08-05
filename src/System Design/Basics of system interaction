@@ -269,12 +269,83 @@ Depends on based on our application design
 ------
 
 Various Algorithims for Rate Limiter which gives way to design a rate limiter:
-1.Token Bucket
+1.Token Bucket (amaaon, stripe use this for rate limiting)
 2.Leaking Bucket
 3.Fixed Window Counter
 4.Sliding Window Log
 5.Sliding Window Counter
  
+
+
+-Token Bucket ALgo (amaaon, stripe use this for rate limiting):
+
+
+
+-------
+Deep dive into design
+1.Rule - can sit in some yaml or some config file
+2.Distributed environment
+
+
+-Notifying the user
+when rate limiting exceeds we send 429 as response to the user
+in api we send header where we can tell why user got rate limited
+how many limits remaining and what is total limit and retry
+
+-in case we want to retry the req or process the req later on then we can put the request into the 'Message Queue'
+
+
+
+
+----Distributed environment factor
+
+multiple servers here so few issues which can occur:
+-Race Condition
+-Synchronization Issue
+
+
+race condition - 
+        simultaneously made req to rate limiter
+Client1 ---------------------------------------- Rate Limiter  ---- Counter (Redis DB)
+client2 ----------------------------------------             
+
+so there can be race condition when there are overlapping requests.
+There are diff strategies to solve this but we see those later
+
+
+-synchronization issues
+
+we have millions of users and we have multiple servers and multiple rate limiters
+
+c1 - rl1 - s1
+c1 - rl2 - s2
+
+
+same client made call to rl1,2 and s1,2 but s1 and s2 not sync
+
+one solution can be 'sticky sessions' but its not a good solution
+
+another soltion is cenrtalized data store
+
+so multiple clients making req to multiple rate limiters but all rate limiters are attached to single redis store so counters will work fine and can solve this issue
+
+-another issue in distributed env is Performance
+
+if user in US and there are multiple data centers so we need to choose the closest one
+
+
+-Monitoring :
+Rules can be monitores
+counter can be monitores
+expiry can be monitored
+
+
+-Wrao uo 
+Distributed env
+Algo parts
+caches
+DB Redis
+
 
 
 
