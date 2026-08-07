@@ -179,3 +179,124 @@ lots of db's give built in sharding strategy like mongodo , cassandra etc
 
 
 
+
+
+**************************************** DATABASE REPLICATION ********************************
+
+always try to understand WHY?
+in intv also always ask why this , why that?
+
+Why database replication is required?
+
+because a db can go down or some data can get lost or , hack may be
+
+so we should be having copies to recover it, eg if banks loose their ata then how to tell which person has how much amount of money,  if an ecmmerce site loose their data and you want to return something how they will know yourpast history.
+
+so its imp to keep copies of data and storing them in multiple places
+
+ok so why its needed ? 
+-High avalability
+-Fault Tolerance
+-Read Scalability
+-Disaster Recovery
+
+
+Types of Replication:
+1.Synchronous Replication
+2.Async
+3.Semi-Synch
+
+Sync :  DB1 (Master)
+       |    | replicas
+       DB2  DB3
+
+so all data comes to master db is send to replicas
+so in sync immediate write happens to replicas
+
+and due to this
+-Data consistency happens
+
+so whereever data consistency is very imp so we go with this like in banks
+
+cons: Slower writes , overall write operations is slower and lots of writes happening to different replicas
+
+ASYNC Partition :
+
+-writes to replica happens in background
+-we move to next write after master confirmation only
+
+
+so it provides :
+-faster writes
+
+cons : Temporary loose consistency
+
+
+
+Semi-Synch Partition:
+
+-here at least one replica to acknowledge about write
+
+
+---------- Replication Models -------------
+
+-Single Leader
+-Multi Leader
+-Leader less
+
+
+
+1.Single Leader (Master | Slave or  Primary | Secondary)
+
+write happens on single leader or master
+and read from slaves/secondary db's
+
+2.Multi-leader
+
+here multiple nodes are handling the write
+
+
+write happens on multiple leaders and then they copy the data to next leaders
+-it provides high read avalability
+-write conflict resoloution is tough
+
+
+3.Leader less:
+
+you can write to any replica
+-it is always available
+
+Dynamodb and cassandra allows this
+
+
+
+
+..............Read-Write Strategies...........
+1.Write should happen only on leaders
+2.read should happen on replicas
+
+3.Replication lag : the time it take to write on the db, so if that time is more than replication lag is more so we have to actively monitor the replication lag
+
+
+
+
+ .................... All DB's we have...............
+
+ 1.Mysql : Master-Slave or Primary-Secondary and we have to manually create this
+ 2.MongoDB : Replica - Set   leader election is automated
+ 3.Cassandra : Leaderless  but we can tune the consistency here
+ 4.Dynamo : leaderless v and it is eventually consistent
+
+
+
+
+
+
+
+
+
+ ++++++++++++++++++++++++++++++ Normal Forms ++++++++++++++++++++++++
+
+
+
+ 
