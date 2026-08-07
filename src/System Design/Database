@@ -297,6 +297,31 @@ Dynamodb and cassandra allows this
 
  ++++++++++++++++++++++++++++++ Normal Forms ++++++++++++++++++++++++
 
+RDBS - normalization - a technique to reduce reduandancy and anamolies from the tables
+
+how normalization is performed ?
+
+there are normal forms...
 
 
- 
+1.1NF - it sees that all attributes/vaLUES in a column should be Atmoic
+2.Second NF - to perform this table should already be in 1NF
+and no partial dependency
+(2nf is just like in sf terms obj1 - junc obj - obj2)
+3.3NF - it should be in 2 NF
+there should not be any Transitive Dependency...
+
+
+usually companies do normalization till here only
+
+
+4.Boyce-Codd Normal Form (BCNF)
+-table should be in 3NF
+-if there is functional dependency - for every functional dependency x -> y, x should be super key
+
+5.4NF 
+-ne in BCNF annd there should be no multi valued depedency
+
+6.5NF - tbl should 4NF
+-no join dependency should be there   rarely used n complex
+
