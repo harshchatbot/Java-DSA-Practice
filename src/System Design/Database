@@ -325,3 +325,15 @@ usually companies do normalization till here only
 6.5NF - tbl should 4NF
 -no join dependency should be there   rarely used n complex
 
+
+
+
+
+
+********************* Indexing **************************
+
+its used and help in database and query optimization.
+so one optimization we saw Normal Forms
+
+Indexing also helps in this.
+
