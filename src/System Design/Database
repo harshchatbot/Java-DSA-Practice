@@ -104,3 +104,78 @@ we have normal forms to achieve normalization
 
 
 
+----------------- Database Partioning & Sharding -----------------------
+
+Partioning : It is a process of splitting a large database or table into smaller partitions.
+
+Why this is needed ??
+When we see industrial data , millions of data is present and millions of data is getting created and then we have to query on a million/billion rows, this becomes very difficult.
+
+1.SO properly scaling the data and improving the query performance/query optimization
+2.Large database efficiency
+
+
+eg. we have a cake and in order everyone get a slice we cut the cake and give to all
+
+same happens with the DB.
+
+Types of Partioning:
+1.Horizontal Partioning - division based on rows/records
+2.Vertical - column based (schema management becomes easy)
+3.Functional - (eg on ecommerce site - order table, user table is seperate )
+4.Key Based - one column amm custid so based on this column value like 1-10k in one table and so on
+5.Range Based - db has some timestamp so based on some amm timeline or timerange lets say we divide he data
+6.Hash Based - we do hashing here by creating a hashing
+7.Round Robin Partioning - here we didivde data cyclically and equally distributed among partitions (it balances the data well)
+
+
+
+SHARDING :
+Shardinig among the databases, we divide the databse itself
+
+A single DB lets say 100 TB will be having a limit of 100tb and after that?
+
+so when data increases beyond we divide the data between diferent databases
+
+    |     |     |
+   DB1   DB2  DB3
+(independent databases)
+
+we create different db's to sharding the data
+
+
+So sharding logic is basically decision of making what data will go in which database......
+
+
+we can do the horizntal scaling by adding one more db ,DB4 correct.
+
+How sharding can be done or how harding logic is created???
+Sharding STrategy:
+1.Range Based  (issue : when a ned db is added this strategy needs to be updated)
+another problem is 'hotshots'(famous personality)...
+
+2.Hash based (depending on our use case hash function is applied)
+it ensures data is uniformly distributed
+
+3.Directory based (we maintain a lookup table which maps its key to shard)
+
+
+Together Partioning and Sharding work hand in hand and optimze the query and handling of data.
+
+
+Challenges :
+
+Sharding challenges:
+-complex queries
+-Resharding
+-Hotspotting
+-Data consistency
+
+lots of db's give built in sharding strategy like mongodo , cassandra etc
+
+
+
+
+
+
+
