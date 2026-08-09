@@ -337,3 +337,29 @@ so one optimization we saw Normal Forms
 
 Indexing also helps in this.
 
+why indexing?
+
+lets say we have a student table which has roll number and that table roll numebrs are no in sorted order ok and lets say we did a query : select * from student where rollnum = '6'
+
+now internall it will start from row 1 and will search entire table, image if there are 1 billion rows then it will searcih all billion rows lol? and if ther are 2 tablesjoined then it will become 2 billion
+
+so this is not optimum
+
+hence indexing helps here , we can lookup a keyword and can directly jump to that
+page num from a book pov.
+
+
+Types of Indexing:
+1.Primary Index - index created in primary key(unique key)
+and primary key will be sorted data
+2.Secondary Index - index created on a non-primary key
+3.Clustered index
+4.Non-custered index
+5.Composite index
+6.Unique Index
+7.Bitmap Index
+8.Hash Index
+
+
+
+
