@@ -424,4 +424,54 @@ eg of such db : Neo4j  ......
 
 
 
+********************************* Bloom Filters ***************************
+
+A very elegant solution for effecient data quering and storage.
+
+
+bloo filter -> It is a probabilistic data structure, which helps in efficient query and data storage.
+
+maine advantage - it tells whether an element is present in a data structure or not...
+
+why probabilistic???
+an element is not present is GUARANTEED.....
+but if bloom filter is saying an element is present so its basocially not 100% gurantee so its probably
+
+It creates a bit array i.e initially every bit os off or zero.
+
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+some data -> will go through -> it will create one hash
+came          series of hash    suppose created hash 187
+              functions N
+
+so all bits at this number will be set to one.
+
+suppose another is 287....
+
+so like this if all the bits become 1 then it means no data is available and it will return false for that.
+
+
+but suppose if another num is 782 and it ran a search qury on the array - so it will tell that all the bits of this are set so it will return true, so its a probablty that this data might be available into the db.
+
+
+ok so advantages:
+-Memory efficient
+-fast results
+-it is scalable
+-maintain security due to hashing
+
+limitations:
+-false positives
+-No deletion
+-precision
+-hash function dependency
+
+
+Use cases:
+1.Used in caching(we check in cache whether data is available in cache or not correct?)
+2.Duplicate detection
+3.Spell checkers
+4.URL Filtering
+
+
 
