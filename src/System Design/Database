@@ -382,3 +382,46 @@ just like ACID properties here in no-sql databases we can have BASE properties a
 
 BASE - Basically available Soft State Eventually consistent
 
+
+
+
+
+********************************* Graph Database ***************************
+
+its like has some nodes and those nodes are connected to each other via edges.
+
+eg SOCIAL Media
+in social media we have friends, we have mutuals etc so there is lot of connections, lots of networiking is there so here graph data structs help us to store connections
+
+so there is a node [name,age,id] and there will be more nodes like this and then there are EDGES also
+
+Whye there is a need of graph data structure???
+Ans: 
+1.In order to solve Many-to-any relationship we use graph datastructure
+2.When relationship between two entities is important to store
+3.Low latency
+
+
+why not tradational sql database??????????
+
+lets say we have a 
+                     another table
+User Table  -----  [Userid , friendid]
+
+here we can find duplicates or redundencies which will cost us more space, more queries and we have to do Join operations which are costly
+
+
+every db has some limitations , so limitation of graph database.....
+it is good for relationships but
+-horizontal scaling is tough task
+-if we need to update the nodes or parameters is also a big task
+
+eg of such db : Neo4j  ......
+
+
+
+
+
+
+
+
