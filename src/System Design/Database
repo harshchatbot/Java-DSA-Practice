@@ -363,3 +363,22 @@ and primary key will be sorted data
 
 
 
+
+********************************* Non-Relational Databases ***************************
+
+
+
+Types of non-relational databases
+No-SQL db's :
+
+1.Key-value pair
+2.Document oriented db
+3.COlumn oriented
+4.Graph based
+5.Time Series
+
+
+just like ACID properties here in no-sql databases we can have BASE properties applied on our non-swl databases
+
+BASE - Basically available Soft State Eventually consistent
+
