@@ -475,3 +475,43 @@ Use cases:
 
 
 
+
+
+
+********************************* Merkel Tree ***************************
+
+
+So many a times it happens that we need to compare one data with another data and we need to find if data is divided into sections so we need to decide which section we need to update..
+
+So here we can do a merkel tree comparision
+
+Merkel tree - its a hash tree , which stores the hash of its type and it is mostly used for Data Verification or Data-Synchronization........
+
+lets say we have 4 data sets
+
+A             B             C             D
+|
+Hash of A   and so 
+hash 0,0    on for all
+
+then we combine tqwo hashes like combine hash of A and hash of b, and if
+hash a = hash b then A = B we can say
+
+now if we need to compare ab and cd so we will create combine hash of a and b and similarly combine haash of c and d.
+
+and if hashes are equal then we can say ab = cd
+
+
+So in ditributed systems where data exists in number of nodes then we need to see that data is consistent in both the places and we can use Merkel Tree here
+
+Merkel tree is used in apache cassandra for detecting inconsistencies.
+
+Merkel tree is used in bitcoin and blockchain as well
+
+
+
+
+
+
+
+
