@@ -1,0 +1,165 @@
+********************************* Load Balancing ***************************
+
+
+clinet 1                App servers
+                        S1 , S2 , S3
+client 2
+
+client 3
+
+
+now lets say some scammer is putting millions of requests on server 1 so it may crash
+
+so there is uneven distribution of the request.
+
+so to evenly distribute the load between servers, we introduced Load balancer
+
+Load Balancer : it is a networking device or a software application that distributes or balances the traffic/load and distributes the traffic among the servers that are highly available.
+
+
+why they are used?
+
+-So that servers can be highly available
+-high performance
+-efficiency(as server utilization become efficient)
+
+
+Now cons of LB???
+
+lets say we have a LB attached ok so 
+
+Clients(C1,C2,C3,C4) -> LB -> Servers(S1,S2,S3,S4)
+
+-Single point of failure (if LB goes down so it will be a problem)
+-Overloaded request
+-Limited Scalability
+
+ok but all above mentioned cons can be resolved using the correct load balancer ok
+
+what are characteristics of a LB ?
+
+-Traffic Distribution
+-High Availability
+-Scalability
+-Optimization is possible(optimize resource utilization)
+-Health Monitoring becomes easy as we have a single point
+
+
+
+Types of LB's :
+
+1.Hardware LB (a real physical device in a data center) but costly devices
+2.Software LB's : cheaer than hardware
+3.Cloud LB's : service provided by cloud providers like AWS, google cloud, Azure etc.
+4.Transport Layer/Layer 4 LB's : It uses IP add and port numbers to distribute the traffic
+5.Application Layer/Layer 7 LB's : These work at application layer, which is most close to user level.
+6.Global Servers LB's : these are located at different geo locations and they transfer traffic to the nearest or most responsive server
+
+
+How to perform Load balancing ??
+There are various load balancing algo's which various load balancers follows.
+
+
+There can be 2 types of load balancing algos.
+1.Static lb algo
+2.Dynamic lb algo
+
+
+Static : 
+-Pre-written algo
+
+
+Dynamic :
+-Dynamic algo evaluates and  take decisions based on real-time situation
+
+
+
+ALgos:
+
+Static Load Balancing Algorithm : 
+1.Round Robin : we distribute the load in circular manner
+
+
+benefits :
+-it is very simple to implement
+-it is fair to do
+
+cons:
+-if servers are of different capacity, then also requests are distributed evenly, unequal capacities can lead to unequal performance
+-Predictability
+
+Another improvised version of this is 
+
+Weighted Round Robin Algo:
+
+eg we have 50 toys and we have to distribute them between 5 child and they are like
+
+C1 (5 yrs old)
+C2 20 yrs
+C3 15 Yrs
+C4 7 yrs
+C5 10 yrs
+
+so ofcoirse they will be having different capacity to hold toys
+
+so distribution will be cyclic only but no. of toys each children is
+having that will be different
+
+same for servers.
+
+
+Benefits :
+-Capacity consideration
+-Flexibility
+
+Drawbacks:
+-its bit complex
+-Maintenance is required and is higher
+
+
+
+2.Source IP Hash Load Balancing Algo : It distributes the incoming traffic among the set of servers based on the hash value of source IP
+address.
+So based on the hash value of the source ip addresses it do the load balancing.
+
+benefits:
+-Consistency
+-Predeictability
+
+
+Drawbcks:
+-Can lead to uneven distribution due to preferences
+-Scaling
+
+
+
+Dynamic Load Balancing Algorithm :
+It is making real-time decisions and evenly distributing the traffic according to the real-time observations
+
+1.Least Connection Method :
+
+request is sent to the server having least number of connection at that time.
+
+pros:
+-load is dynamically balanced
+
+cons:
+-it forgets/ignores the server capacities
+
+if each req is thightly couples then also issue
+
+
+
+
+2.Least Response Time Load Balancing :
+here they keep on monitoring the response time, they keep previous data of each server response time and based on least response time they redirect the requests
+
+-high performance
+
+-but its based on historical data so historical data baisness can happen
+
+3.Resource based Load Balancing :
+based on the cpu, memory, network and other things monitoring whichever is suitable they redirect requests
+
+but its overhead is managing all these resources is complex
+
