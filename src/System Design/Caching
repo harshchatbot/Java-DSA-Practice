@@ -1,0 +1,141 @@
+************************* Caching ************************
+
+We will be using cache in lots of places to save the DB calls.
+
+in our home we have kitchen ok
+
+when we study late so we pick some food items from kitchen and keep it in our room cupboard only so that its nearer and i can quickly grab my food while studying without wasting much time.
+
+so cache is also similar.
+
+a user can directly do a DB call to get data, but there can be lots of db calls overloding the db and it is time taking as well.
+
+so what we can do we will let user fetch data from cache.
+if not available in cache then user can do a db call.
+
+so this will be faster and db calls will be reduced.
+
+Caching : Storing data from where it is easy and quick to access.
+
+benefits:
+-fast data access
+-reduced db calls
+
+
+q: why not all the data is kept in cache itself???
+
+-cache is costly
+-data loss can be there as its volatile storage
+
+How cache works?
+
+
+users  -----  App server ---  Cache  ---- DB
+
+
+Types of Cache:
+
+1.Application Server cache
+2.Distributed cache
+3.Global cache
+4.CDN
+few more but above mentioned are most important
+
+
+Application Server cache -
+
+users ----- LB -----  Application server (inside app server a part will be having in memory cache storage)  ----- DB
+
+
+
+Distributed cache - 
+
+here we will be having a single cache space which will be distributed in several parts and the request will be routed to different distribution.
+so whatever data we are looking we will go for the specific node from that distributed system.
+
+for distribution consistent hashing is utilized.
+
+
+
+Global cache - 
+
+There will be a single global cache which will be storing the most frequent data and different application servers can request data from it and get the data.
+
+and in distributed cache different app servers were requesting different nodes of the cache but here in global a single cache will be there and all the data from all the servers will be stores here only.
+
+
+CDN(Content Delivery Network) - 
+Ok so when we work on the Internet
+
+and suppose there is one application that is live across the world :
+like in US, China, India, Russia etc
+
+suppose our main data center is in india
+
+if a user in us needs some data ?
+
+it will make a call to india data center to get data which is actrually very far away so it will be very slow and time taken
+
+
+so what we do, instead of this
+
+near to the requesting user country like here US,  we place CDN servers in nearby countries of US, this cdn server will store the most important and frequesnt data that user needs.
+so that the access is fast enough.
+and this data is filled by the data centers.
+
+So this is about strategically placing servers geographically across the world/globe, so that from whereever the call happens it can visit to the nearest cdn server.
+
+
+
+
+
+
+
+
+Now,
+lets say there is some data in cache and that sae data is in db
+
+    cache ----- DB
+
+and suppose we update cache weekly.
+but between that week, if the db has some udated that but cache does not have that so the user will get the old stored data or outdated data from cache.
+
+So we have to make sure that data is getting updated regularly using some cache invalidation strategies...
+
+
+cache invalidation strategies :
+-Time-based (change strategy from weekle to daily by seeing data update frequency)
+-Event-driven (if any change/event is happening in db then we update the same in cache as well)
+
+
+
+How to remove the cache data ???
+Cache eviction policies
+
+we said that we will update the data weekly or daily as per req etc etc
+
+but what data needs to be removed? because cache needs to store the most used or frequent data as we have limited cache capacity.
+
+so lets see the policies :
+
+-LRU (least recently used)
+means simple remove the data which is not used recently.
+-LFU (Least frequently used)
+data which is not used frequently used
+-FIFO (First in first out)
+the datawhich came first, remove that data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
