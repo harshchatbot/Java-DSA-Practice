@@ -133,9 +133,38 @@ the datawhich came first, remove that data
 
 
 
+*********************** CDN in System Design ************************
+
+
+CND concpet : content delivery network
+
+lets say app is developed in india and the datacenter and all db's are in india.
+
+we place servers across the globe and they are updated with the most frequent info
+
+
+CDN Structure :
+
+
+                Edge Server                 Edge Server
+                             Parent Server
+                Edge Server                 Edge Server
+
+
+when a user is making a call, that call we will directed to the nearest server, and if data is available, user get the data , if data not available then that call will be redirected to parent server
+and from there the data will be updated to edge server and then user gets the data.
+
+why we have cdn ??
+-faster access
+-improved website performance
+-reduced latency
+-enhanced scalability
+-Bandwidth saving
 
 
 
+How CDN works????
+alrdy noted.
 
 
 
