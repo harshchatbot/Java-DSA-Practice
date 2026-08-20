@@ -84,6 +84,132 @@ Monitoring tools : Prometheus , Nagios etc
 
 
 
+************************* Back of Envelope Estimation ************************
+
+When we start designing, we should be having few things like
+
+-no. of users
+-api -> QPS
+-how much data we store
+
+and if this grows 10x every year  so we need to scale the system accordingly and for that we need this estimation as it directly affects the
+-scalalbility
+-cost
+-storage
+-performance
+
+Jeff Dean x google scientist says that back of envelope calculation can help us estimate better.
+
+Back of envelope says , we need to focus on 3 things :
+1.Power of 2
+2.Latency numbers
+3.Availability numbers
 
 
+Power of 2 :
+
+everything in my pc is stored in format 0 and 1 i.e in bits
+in ascai system every character or integer takes some kinds of bits
+
+smallest unit is 1 bit
+eg. char -> 1 byte -> 8 bits -> 2 power of 3
+
+similarly 
+1kb -> 1k bytes -> 2 power 10
+1 MB -> 1mn bytes -> 2 power 20
+
+so on.....
+
+so all data/storage estimation should be done in power of 2
+
+Latency Number :
+
+how fast or slow a system is performing is the latency
+
+1s
+1 mili sec -> 10 power -3 sec
+1 micro sec -> 10 power -6 sec
+1 nano sec -> 10 power -9 sec
+
+
+all latency numbers should be in these notations.
+
+
+operation names                 Time
+L1 cache reference                0.5 nano sec
+L2 cache ref                        0.7 ns
+Mutex lock                          100 ns
+Main memory                         100ns
+compress operation(1k bytes)        10 micro sec
+Send 2k bytes(1gbps n/w)            20 micro sec
+Disk operation                      10 mili sec
+
+this estimation is of 2010 year
+
+
+so what we observed
+-cache is fastest
+-memory is faster than disk
+-compressions operation is fast as compared to sending somtheing over network, so we compress first and send that over n/w
+
+
+
+Availability numbers :
+
+higher the availability, lesser will be the downtime
+
+i.e if my server is 100% available then i have 0% downtime.
+
+like amazon and google servers say they are 99% available and this is calculated based on SLA i.e service level agreement
+
+
+Example:
+Twitter - QPS & storage requirement estimations
+
+Assumption:
+-300 mn monthly active users
+-50% of these users , uses twitter daily
+-user posting 2posts per day on avg
+-10% of these tweets is having some media
+-data storage we need to store 5 year old data , till 5 yr old, data >5 we can delete, archive or move to some other cloud storage
+
+
+
+how to estimate QPS(query per second)-
+DAU - 150 mn
+Tweets 2 post each user so -> post/sec? -> 150 * 2/24/3600 -> 3500 posts per second
+
+so QPS = 3500
+
+we also want PQPS - we assume mostly PQPS is twicw of the given QPS
+PQPS = 7000
+Storage - 
+
+every tweet having a tweet id - 64 bytes
+text - 140 bytes
+media - 1 MB
+
+total storage -> 150 mn active users * 10% 1MB * 2 -> 30 TB per day
+
+now we need to store 5 years of data so -> 30 * 5 * 365 = 55 perabytes
+
+
+Tips :
+
+things to keep in my while doing estimations...
+
+if a value 9947.47 -> so do the roundind and approx..
+
+always communicate well your assumptions and write down so that itv can understand
+
+label like storage = 5 no, its 5 TB or 5MB so we should have clear units
+
+usually intv ask - QPS , PQPS, storage, cache, cache calculations, number of servers
+
+
+
+
+
+
+************************* CAP Theorem ************************
 
