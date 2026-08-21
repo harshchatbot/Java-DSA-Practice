@@ -213,3 +213,104 @@ usually intv ask - QPS , PQPS, storage, cache, cache calculations, number of ser
 
 ************************* CAP Theorem ************************
 
+CAP -
+
+C-Consistency , like data should be consistence
+A-Avalability , like server availability
+P-Partition Tolerance
+
+now cap theorem says that at any given point of time only 2 out of these 3 can be available in a distributed system.
+
+
+Consistency --
+In a distributed systems there are different nodes for the data.
+            N1 N2
+User1 ----> N3 N4
+
+suppose data is coming from 3 different nodes and user is connected to 1 node
+so our system should like to whichever node user is connecting (eg user connected to N3)to get the data, it should always get the correct data and all the system should be consistent enough to gurantee that data only.
+
+
+Availability --
+suppose we have 3 nodes storing the data, if 1 node gets down so user should still be able to get the data so that is availability
+
+
+
+Partition Tolerence -
+suppose we have few nodes and the are having some data and some failure occurs and 2 nodes goes down & some data loss can also happen.
+But partition tolerance see that you are able to recover these partitions gracefully and system continues to operate and it doesent require downtime to bring back these nodes and system is still operating and still we are able to revocer the partitions and the data.
+
+
+
+Trade offs in CAP Theorem
+
+we can have below combinations :
+CA - X
+CP
+AP
+
+        N1  N2
+        N3  N4
+
+in real world its not possible this anything is never going down correct?
+so CA cannot be possible that there is no partition,
+as we will be having atleast 1% of partition which will lead to Partition Tolerence
+
+now CP :
+
+        N1  N2
+        N3  N4
+
+now here we are not guranteeing availability ok so in real world
+suppose N1 goes down, so we are not saying 100% availability so we can take a downtime, then we recover the node, then we replicate the data and get back online.
+so then user can ask for get data and we will provide the updated data.
+
+
+now AP :
+
+        N1  N2
+        N3  N4
+
+here we are prioritizing availability over consistency
+
+suppose replication stops at N1, so if a user connectes to N1 then he will get outdated data.
+even there is availability but providing outdated data.
+
+
+
+
+CAP Theorem Use-Cases :
+
+1.Bank Transcation.
+The most important aspect of Banking, i.e Consistency
+so we should choose CP
+thats y in bank we have seen they take downtime as  bank cannot afford to show false data.
+
+2.E-commerce website 
+there is a tracker for our order which shows some timeline.
+
+now in background a node fails which was storing the updated timelines.
+so here we are ok to show the outdated timelines and in the mean time we will fix it.
+Some trade off with the consistency is a fine case here and we are not worried about it and it will not harm the user much.
+
+so here we use AP.....
+
+
+
+Hybrid:
+We can go with HYBRID approach also where for some part we use CP and for some part we use AP.
+
+
+
+Advantages of CAP Theorem:
+-We get a decision making as it gives us simplified version of the concept
+-it helps in understanding tradeoffs and why they occour
+-correct design selection
+-system performance
+
+
+Disadvantages of CAP Theorem:
+-'over simplification' is there as there are many more other factors also involved which should be considered like performance, data durability , latency
+so for starter it is good
+-No 'Hybrid systems' knowledge CAP theorem is giving
+-There are other factors also inloved and not just these 3 so 'misinterpretation' can happen
