@@ -314,3 +314,182 @@ Disadvantages of CAP Theorem:
 so for starter it is good
 -No 'Hybrid systems' knowledge CAP theorem is giving
 -There are other factors also inloved and not just these 3 so 'misinterpretation' can happen
+
+
+
+
+
+
+
+
+
+
+
+************************* Trade Off in System Design ************************
+
+-Scalability :
+initially 100 user then someday they grows to 1 lakh
+so whatever we are designing our components should be able to scale
+a capacity of a system to support growth and manage the upcoming increasing volume.
+
+Managing growth
+Increasing performance
+Ensuring availability
+Cost effectiveness
+Innovation
+
+
+how we can acheive scalability in any system???
+2 aspects
+horizontal scalability - we have 1 big 1-tb db, and we added one more db
+vertical   ''         - means increasing the hardware and the software
+
+
+-Reliability :
+
+it is about consistent performance and minimal failuers.
+
+factors that affect reliability
+Design quality
+hardware quality
+Bugs
+External conditions (eg third party services, if they fail(api) we get affected)
+Maintenance 
+
+how can we achieve high reliability ?
+-scalability & maintanability
+-Fault tolerance
+-Monitoring
+-Load Balancing
+-Redudandency
+
+
+-Availability :
+-user experience
+-business
+-Disaster& recovery
+
+how can we achieve high availability ?
+Ans: 
+
+1.by increasing redundancy
+2.using load balancing
+3.failover mechanish
+4.monitoring
+5.performance optimization
+6increasing the scalability
+
+
+
+
+-Consistency : 
+
+N1  N2
+N3  N4
+
+all node should ensure that they have the same data
+
+-Correctness(systems in banking need to focus on consistency and correctness)
+-Reliability
+-Concurrency Control
+-User Experience
+
+
+Types of consistency :
+1.Strong consistency
+2.Eventual consistency
+3.Casual consistency
+4.Weak consistency
+
+
+Strong consistency - means system is strictly consistent and it gurantees that every read operation will definately be consistent and how it maintain this
+
+4 nodes
+read -> N1  N2
+        N3  N4
+
+when a read operation happens on N1 eg so it confirms from all other nodes n2,n3,n4 and then will get the result
+when write happens so it will write on all and the provide result
+
+
+Eventual consistency -
+
+when a write happens  
+
+write ->    N1  N2
+            N3  N4
+so it startes replicating that to other nodes also, like n2 then n3 then n4
+so while replicating for a small period of time it can be unconsistenc but eventually it will become consistent.
+
+
+Casual consistency -
+
+if someone concurently making edits on different sections of a document.
+
+it just ays that if an event depends on another event then everyone must see them in that order.
+but unrelated events can appear in different orders for different users.
+
+
+
+Weak consistency - 
+
+SO its like when when update a data so its not gurantee when other users will see it or which user will see the updated data first and which will not. eg i updated my profile pic , some users seeing my updated image but few other are siing my old dp only.
+
+It’s commonly acceptable for things like live video streams, gaming state, counters, or some cached data, where temporary outdated data is not critical.
+
+
+
+
+Trade Off's that happens :
+
+1.Scalalbility vs Performance -
+
+Scalalbility is like increasing size and performance is like the speed and how well it executes a task 
+
+so when you are increasing a system so obviously the performance will get affected.
+as earlier e had lets say 1 TB of data and system is taking sometime to query now when the data becomes 2 TB the system will be slightly slower and performance will get affected.
+
+2.Vertical Scaling vs Horizontal Scaling -
+
+vert scal - inc cost and single point of failure can happen
+
+hor scaling - it is complex, it requires maintenance
+
+we discussed this in CAP theorem also
+
+3.Consistency vs Availability -
+
+cons - we have consistent data at all point of time
+
+avail - system is available
+
+
+so if a node goes down so either we have to take a downtime to get the server up and get consistent data
+
+or
+we have to jeopradize consistency and choose the availability of system
+
+4.Latency vs Throughput - 
+
+Latency - Time taken by a system to respond to some request.
+
+Throughput - rate at which system can process or handle a workload.
+
+so lets say we have 10 requets and our system is able to handle 10 requests/second
+so this is our throughput
+
+how many requests a system is able to handle in a given amount of time.
+
+
+trade offs 
+1.either you can have low latency(lower the time) and high throughput (more num og req getting)
+2.We can have high throughput and higher latency
+
+
+
+
+Performance vs cost :
+
+lot of times to inc performance we have to neglect to cost or to neglect performance we can reduce cost.
+
+
