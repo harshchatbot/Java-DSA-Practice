@@ -1,0 +1,39 @@
+************************* Encryption ************************
+
+End to end Encryption
+
+eg whatsapp
+
+me send message ------ my friend
+so message is encrypted at me end and then decrypted at friends server end.
+
+Types of Encryption
+-Symmetric
+-Asymmetric
+
+
+
+Symmetric :
+so here what happens is that both sender and receiver has a key, using that key the message is encrypted and at receiver end using that same key the message is decrypted.
+
+But this option is not very safe.
+
+in order to make it more safer we go to assymmetric encryption.
+
+
+Asymmetric :
+
+here we have 2 keys
+-Public (which will be with both sender and receiver)
+-Private key (this will be only with receiver)
+
+
+sender->message->public key->encrypted message ->pass encrypted message + public key ----------------  Receiver (take encrypted msg + public key + private msg)
+
+the combination of private ley+public key will be utilized to decrypt the message.
+
+this is very safe.
+
+
+
+
