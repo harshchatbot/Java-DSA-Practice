@@ -1,0 +1,118 @@
+************************* Message Queues ************************
+
+
+ok so suppose we have 2 systems who wants to communicate with each other and we want an async communication ok
+
+    S1-------------Queue----------S2
+    (Producer)                  (Consumer)
+we place a queue b/w both systems and then we make a request
+
+so its a form of communication or a data transfer mechanism 
+
+system that sends the message is known as 'Producer'
+'Consumer' who consumes the message
+'Queue' where messages will get collected or message collector
+
+There is another component 
+'Message Broker' - it provides extra functionalities :
+-Routing
+-Filtering of the message (like filtering test data)
+
+Working of messaging queue ???
+
+-Step1 - Sending message
+-Step2 - Queueing messages (queue just stores the message and messages are typically stored in FIFO manner)
+-Step3 - consumer consumes the message and processess it
+-Step4 - Acknowledgment (in some cases like imp data then ack can also be used)
+
+
+
+What or Why is the need of a messaging queue???
+
+-For Asynchronous Communication
+-Decoupling
+eg S1 --queue-- S2
+s1 gwenerating and sending message via queue and S2 is consuming and processing the message
+so this is working fine and still both systems are independent of each other there is no hard-coupling or hard dependency
+both systems can be scaled separately and there is no reliability on each other
+
+-Scalability
+we can add more servers so it can handle more load
+
+-Reliability
+so now message sits into the message queue and if consumer fails to consume/prcoess it in the 1st time, we can add retries,dead letter queues etc to ensure message gets processed or the message is not lost.
+
+-Workflow management
+
+
+Types of Messaging Queues :
+1.Point-To-Point MQ
+if there is a single producer and consumer
+Ap1 -- queue -- Ap2
+
+2.Publish-Subscribe Message Queue
+
+                     -- Subscriber1
+Publisher ---- Queue -- Subscriber 2
+                     -- Subscriber 3
+
+
+
+
+
+Message Routing :
+
+1.Topic-Based - here messages are sent to some topic or channels.
+
+whenever there are so many subsribers, we usually call it as Topic
+
+            - S1
+P----Topic1 - S2
+            - S3
+
+So publisher publishes a message and subscriber shows interest and subscribe to that particular topic and whoever is subscribed to that topic they all will receive that message
+
+
+Direct Routing :
+
+This is only direct routing
+
+Ap1 -- queue -- Ap2
+
+
+Content Based Routing : 
+
+            - S1
+P----Topic1 - S2
+        |    - S3
+        |
+     headers 
+
+
+so suppose we have added headers in Topic which identify that which subscriber header is matching or some specific rule is getting fulfilled so based on content and that matching routing is done to different subscribers.
+
+
+
+Dead Letter Queue :
+
+Producer ------ Queue ------ Consumer
+                DLQ
+            (another queue)
+
+so consumer took the message but was not able to process some message successfully            
+so in that scenario the message will go into DLQ , which are unsuccessful message
+
+or may be if TTL is involved so suppose TTL wasw 20 second, so 20 sec message will stay in message queue but after that the message will go into DLQ
+
+or if lets say consumer is not available in that case also message goes into DLQ
+
+
+
+
+
+Message Priortization Queue :
+We assign priorities to messages and based on that priority those messages are consumed.
+
+
+
+
