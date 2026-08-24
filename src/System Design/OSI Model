@@ -1,0 +1,53 @@
+************************* OSI Model ************************
+
+********  Computer Network Models ********
+
+How network communication betyween two system happens?
+
+
+
+So to simplify the tasks and to organize everythng over the network, we use Layer ed Architecture
+
+this layered arch break down all the work into different layers and every layer will be having their own set of tasks and will be performing their own set of work.
+And these together will make the data transfer from one device to another over the network.
+
+Layered archotecture : has 2 models 
+1.OSI Model
+2.TCP/IP Model
+
+
+ADvantages of layered archtecture:
+-Modularity
+-Interoperability
+-Scalability
+-Troubleshooting
+
+
+
+OSI Model :
+Open System Interconnection
+
+its a theoritical model developed by ISO and it consists of 7 layers
+
+1.Application Layer (UI)
+2.Presentation Layer (Tasks around the data)
+3.Session Layer (holding session b/w 2 devices)
+4.Transpot Layer (dividing data into parts and transport)
+5.N/w Layer (some n/w info needs to be embeded)
+6.Data Link-layer (manages routing etc)
+7.Physical layer (bit data)
+
+
+
+
+TCP/IP Model : backbone of the internet :
+Transmission Control Protocol / Internet Protocol
+
+This is a 4 Layer architecture
+
+1.Application Layer - User facing service , follows FTP , http , dns rules etc
+2.Transport ayer - responsible for end-to-end coommunication, it uses protocols like TCP n UDP
+3.Internet Layer - IP addressing is managed , routing , ARP
+4.Network Access Layer  - mac address etc
+
+
