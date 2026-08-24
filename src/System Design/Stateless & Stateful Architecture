@@ -1,0 +1,71 @@
+************************* Stateless & Stateful ************************
+
+what is STATE - it is any data which needs to be proccessed between the request or session
+
+lets say user mde a req -> 
+
+
+--> REQ 
+    (name, 
+    phone no.,              
+    address,
+    hobbies etc)
+    user gave all the data so this is our state
+
+
+    |
+    |
+    |
+    |
+
+
+now out of the req data whatever we need to persist or store in the db will be state.
+
+
+
+--STATELESS :
+
+lets say we have a website for JSON parsing.
+when we click on the website , the UI opens and generally it doesent asks us for a login.
+But as sson as we refresh the site, the data which we have entered on the site, that goes away.
+
+as it doesent store or doesent persist the data.
+
+so the data is not stored anywhere then that is Stateless.
+so thats stateless architecture.
+
+eg. All rest api's or lambda functions
+
+--STATEFUL :
+
+User login system - we went to a site and we click on create account and it asked for some details like username, password etc..
+
+now next time when we come here on this website this time
+we dont need to create account, we go to Login now.
+
+because when we make the create account req, the req data got stored in the database and db has username and pass stored.
+and next time when we login it verify creds against the db and will allow us to login.
+
+similarly in e-commerce we have orders, in cart no matter how long we kaap the cart open the order remains there as the data is persisted their, stored in db
+so this is stateful architecture.
+
+
+
+
+comparision :
+
+
+                Stateless                                       Stateful
+1.Memory            No                                              Yes
+or
+Past
+
+2.Scalbility        High                                     Moderate to low
+
+
+3.Failure           Easy                                        Hard
+Recovery
+
+4.Performance       Input                                       Easier
+
+5.
