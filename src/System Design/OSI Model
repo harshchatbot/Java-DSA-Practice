@@ -51,3 +51,161 @@ This is a 4 Layer architecture
 4.Network Access Layer  - mac address etc
 
 
+
+
+
+
+
+********  OSI Model ********
+
+
+OSI model is a set of rules that how different computer systems communicate over network.
+
+developed by ISO - international organization of standardaziation
+
+So OSI model has 7 layers which does independent wkr and together they make communication between two sytems easy.
+
+1.Application Layer
+2.Presentation Layer 
+3.Session Layer 
+4.Transpot Layer 
+5.N/w Layer 
+6.Data Link-layer 
+7.Physical layer
+
+
+1.physical layer - 
+
+this layer is responsible for actualy physical connection b/w devices.
+two devices can connecte via , bluetooth, cabels , internet etc
+
+data will be in forms of bits as compture store in that form.
+
+now this will be transmitting bits from one system to another.
+
+This layer convert data into bits 0,1
+
+functions -
+-Bit synchronization
+-Bit Rate Control (Transmission rate)
+-Connection b/w 2 devices
+-Transmission mode
+
+
+
+2.Data Link-layer  :
+
+DLL
+
+-> data -> 0101 ..... node --------- node -
+                        data,
+                        add,
+                        mac add
+
+
+use cases or functions :
+-Framing (bits are send in the form of frames)
+-Physical Addressing (every device gets a physical address , mac add)
+-Error control (if some frames get missed )
+-Access Control
+
+
+
+3.Network Layer :
+
+Host A  ------------------- Host B
+n/w A                           n/w B
+so n/w layer is responsible for transfer of data over the n/w
+
+
+here data is converted into packets which contains the infor about the n/w details like IP address etc
+
+also over n/w a to n/wb it is responsible for routing and ensure shortest route/path also.
+
+
+Functions : 
+1.Routing
+2.logical addressing
+
+
+
+
+
+
+
+4.Transport Layer  :  
+responsible for end to end delivery of the message.
+
+it divides data into segments
+
+SegA    SegB --- Segment(then all data combines)
+
+when communication happen b/w networks, then there are some protocols or rules for that like TCP/UDP etc
+
+so all these rules also it is responsible.
+
+Functions:
+1.Segmentation & reassemble
+
+
+
+
+
+
+5.Session Layer  : 
+
+it is responsible for management of conections.
+A-----------B
+
+FUnctions:
+1.session establishment b/w 2 devices , termination of session & maintenance of that session
+
+
+
+6.Presentation Layer  : 
+
+responsible for conversion of data
+
+Functions:
+1.Translation of data
+2.Encryption & decryption
+
+
+
+
+7.Application Layer  :
+closest to the device.
+
+FTP , it allows user to connect to remote host
+
+
+
+App layer [create the data]
+    |
+Presentation layer [data is formatted]
+    |
+Session layer  [establish connection]
+    |
+Transport layer [data into segments]
+    |
+N/w layer [segment into packet  ]    
+    |
+DLL [packet -> frames]
+    |
+Physical layer [frame -> bits]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
