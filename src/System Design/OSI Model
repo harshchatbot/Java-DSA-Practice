@@ -295,4 +295,92 @@ eg, if we are sending an email or secure thing then we use TCP, if we are going 
 
 
 
+********  TCP/IP ********
+
+TCP/IP - Transmission control protocol / Internet protocol
+
+it helps in relaible intercommunication bw devices over the n/w.
+
+it provides us a standard set of protocols which will ensure that data we have at sender side , the same data is send to the receiver side without any errors.
+
+it is designed by DOD - dept of defense in 1970's
+
+it is a consised model of OSI model
+
+Work of TCP/IP?
+-seamless communication
+-Accuracy of data is maintained by this model
+
+Layers of TCP/IP model, unlike OSI it has 4 layers
+
+1.Application layer
+2.Transport Layer
+3.N/w or Internet layer
+4.N/w Access layer
+
+
+
+                OSI Layer                               TCP/IP
+1.           App , Present and session layers          Application layer
+2.           Transport                                 Transport
+3.           Network                                    Network layer
+4.           DLL+Phy                                    N/W Access Layer
+
+
+
+Application layer - closest to end user and where application and UI reside.
+
+it provides services and interface to end user to access network reources
+
+-Interface
+
+Key responsibilities?
+-it supports protocols like http, FTP , SMTS , DNS
+-handles data formatting , encryption
+-session management
+
+
+
+Transport Layer - responsible for correct delivery of data and in the correct order
+
+here mainly we use TCP and UDP
+
+Functionality :
+-either reliable(TCP) or unreliable(UDP) both data delivery
+
+
+
+
+Internet Layer - 
+there are lots of ay of sending data
+lots of different routes of sending data
+and data is sending in packets
+
+so it handles the routing of the data and it utilizes the IP to assign the unique IP address to the devices.
+
+Functionality - 
+-finding best path
+-provides addressing , IP add
+-handles packet forwarding , logical addressing
+
+
+
+
+Network Access Layer - 
+responsible for physical connections betweek the devices b/w the same network.
+
+functionalities
+-handles how data is physically sent
+-Manages Mac addressing
+
+
+
+
+
+how TCP Model works???
+
+
+user sends data -> application layer (prepares data) -> Transport layer (break data into segments, maintains TCP or UDP connection and adds sequence number) -> Internet Layer (here IP address is added and decides the route) -> Network Access Layer (converts packets into frames whcih will be having mac address and sends data in binary format)
+
+
 
