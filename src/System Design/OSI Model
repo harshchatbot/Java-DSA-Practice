@@ -23,8 +23,7 @@ ADvantages of layered archtecture:
 -Troubleshooting
 
 
-
-OSI Model :
+********  OSI Model ********
 Open System Interconnection
 
 its a theoritical model developed by ISO and it consists of 7 layers
@@ -200,10 +199,98 @@ Physical layer [frame -> bits]
 
 
 
+********  TCP and UDP ********
+
+
+TCP - Transmission Control Protocol
+
+it is very important for reliable data delivery
+
+so to connect 1st it will send a connection request called sync signal
+
+once server the syn signal and is ready to connect, it sends back sync+acknowledgment
+
+and when client receivet it and is ready, client sends acknowledgment
+
+        client  -----sync------->  server
+                <---sync+ack-----  
+                -----Ack--------->
+
+
+so it is a 3 step connection which happens here and post that only transmission of data happen.
+
+So its a 3 way handshake before transferring any data.
+
+now once the data sync is done, transfer of data happens, it also maintains -numbering system of packets to maintain the order of the data
+
+        P1 - P2 - P3 - P4  so packets are sent and sent in some order hence numbering is required
+
+
+suppose we are downloading a file and some segments of data gor created and suppose we received segment1 , 2 and 3 and post that the connection broke.
+
+so TCP knows that these many segments were sent so when connection is online again it carry on from there only.
+
+-if any error appears it also does the error handling.
+
+Where TCP is used?
+-FTP (it relies on tcp to send large files)
+-Email (email used SMTP and smtp also relies on Tcp to send email)
+-Secure connection a it maintains proper handshake
+
+
+advantages :
+-Reliable
+-Sends data in sequence
+-Secure delivery
+
+disadvantage
+-it is slower than UDP
+
+it is good for broad n/w but for smaller networks it is very hectic
+
+
+
+UDP (User Datagram Protocol) :
+
+Live streaming , in live stream we cannot rewind or go back correct?
+because udp doesent manitain the connection prior sending the data and hence its Unreliable and Connection-less protocol.
+
+
+        Sender    -------   Reciever
+
+
+
+-Direct data send so its faster
+-doesent keep the track of data getting send
+
+Applications/Usages ?
+
+-Real-Time streaming
+-Online Gaming
+-Multi casting
+
+Advantages :
+-Faster
+-Connection not required
+-Good for live streams
+
+
+Dis-advantages:
+-No knowledge of data is transferred or not so non reliable
+-data loss can happen
 
 
 
 
+
+
+
+Which is better??
+
+
+Depends on the use cases ..
+
+eg, if we are sending an email or secure thing then we use TCP, if we are going for a live streaming or video gaming then UDP
 
 
 
