@@ -128,3 +128,168 @@ print("Guess ? ",True or True and False)
 #Note: 'and' is evaluated before 'or'
 #so for better visibility use parenthesis
 print("Guess now ? ",True or (True and False))
+
+
+#Conditionals
+#Booleans are most useful when combined with conditional statements, 
+# using the keywords if, elif, and else.
+
+def positive_or_negative(x):
+    if x == 0:
+        print(x , " Is Zero")
+    if x > 0:
+        print(x," > 0") 
+    if x < 0:
+        print(x," < 0") 
+    
+positive_or_negative(0)
+positive_or_negative(-1)
+positive_or_negative(1)    
+        
+
+#Boolean conversion¶
+
+
+
+"""Lists"""
+primes = [2, 3, 5, 7]
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+
+#list of lists
+
+hands = [
+    ['J', 'Q', 'K'],
+    ['2', '2', '2'],
+    ['6', 'A', 'K'], # (Comma after the last element is optional)
+]
+# (I could also have written this on one line, but it can get hard to read)
+hands = [['J', 'Q', 'K'], ['2', '2', '2'], ['6', 'A', 'K']]
+
+
+#A list can contain a mix of different types of variables:
+my_favourite_things = [32, 'raindrops on roses', help]
+# (Yes, Python's help function is *definitely* one of my favourite things)
+
+print('planet at 0th index : ', planets[0])
+
+#if you want the last element
+print('planet at last index : ', planets[-1])
+
+#if you want the 2nd last element
+print('planet at 2nd last index : ', planets[-2])
+
+#Slicing
+#Imp rule --> list[start:end] , 
+#here start is included, end is excluded
+
+
+#find first 3 planets
+
+print("first 3 planets : ", planets[0:3])
+
+#find 2nd, 3rd and 4th planets
+
+print("2nd, 3rd and 4th planets : ", planets[1:4])
+
+#if our default is 0th indec only then another way to write 
+print("first 3 planets 2: ", planets[:3])
+
+
+
+#Q  "give me all the planets from index 3 onward"
+print("give me all the planets from index 3 onward: ", planets[3:])
+
+## All the planets except the first and last
+print("All the planets except the first and last: ", planets[1:-1])
+
+#Q # The last 3 planets
+print("The last 3 planets: ", planets[-3:])
+
+
+
+#Changing lists
+#Lists are "mutable", meaning they can be modified "in place".
+
+#One way to modify a list is to assign to an index or slice expression.
+
+
+#let's say we want to rename Mars
+planets[3] = 'Harsh'
+print("planets : ", planets)
+
+#shorten first 3 planet names
+planets[:3]= ['Me', 'Ve', 'Ea']
+print("planets v2 : ", planets)
+
+#Some important list functions....
+
+#length of list
+print("length : ",len(planets))
+
+## sort planets in alphabetical order , use sorted
+print("sorted : ",sorted(planets)) #returns a new sorted list. It does not change the original names list.
+
+#sum
+print("sum primes : ", sum(primes))
+
+#max and min
+print("max primes : ", max(primes))
+print("min primes : ", min(primes))
+
+
+
+
+
+#### Interlude: objects
+
+#In short, objects carry some things around with them. 
+# You access that stuff using Python's dot syntax.
+
+#A Python object has properties/data and methods, and you access them using a dot .
+
+name = "Harsh"
+print("upper : ",name.upper())  #method
+
+#name        → object
+#.upper()    → method belonging to that object
+
+#List methods
+
+#list.append modifies a list by adding an item to the end:
+
+planets.append("Pluto")
+print("append : ",planets)
+
+
+#list.pop removes and returns the last element of a list:
+planets.pop()  #removes last element
+print("pop : ",planets)
+
+
+
+###### Searching lists
+
+#Where does Earth fall in the order of planets? 
+#We can get its index using the list.index method.
+print("planets : ",planets)
+planets[3] = "Earth"
+print("planets 276: ",planets)
+
+earth_index = planets.index("Earth")
+print("Earth index : ",earth_index)
+
+#now lets find pluto
+
+#pluto_index = planets.index("Pluto")  #gives ValueError as pluto is not in list
+#print("pluto index : ",pluto_index)
+
+## we got
+"""File "/Users/harshveersinghnirwan/Downloads/Java-DSA-Practice/src/Python/Basics.py", line 283
+    pluto-index = planets.index("Pluto")  #gives error as pluto is not in list
+    ^^^^^^^^^^^
+SyntaxError: cannot assign to expression here. Maybe you meant '==' instead of '='?"""
+
+#To avoid unpleasant surprises like this, 
+#we can use the in operator to determine whether a list contains a particular value:
+
+print("check pluto present ? : ", "Pluto" in planets)  #False
