@@ -293,3 +293,44 @@ SyntaxError: cannot assign to expression here. Maybe you meant '==' instead of '
 #we can use the in operator to determine whether a list contains a particular value:
 
 print("check pluto present ? : ", "Pluto" in planets)  #False
+
+######Tuples
+
+#Tuples
+#Tuples are almost exactly the same as lists. They differ in just two ways.
+
+#1: The syntax for creating them uses parentheses instead of square brackets
+#2: They cannot be modified (they are immutable).
+
+t = (1, 2, 3)
+print("tuple : ", t)
+
+t2 = 1, 2, 3 # equivalent to above
+print("tuple2 : ", t2)
+
+#try to modify
+
+# t[0] = 100 #TypeError: 'tuple' object does not support item assignment
+
+#but we can access the elemets like list:
+print(t[0])  # 1
+
+#What is the usage of Tuples?
+#Use a tuple when you want to group a fixed set of related values that should not change.
+
+#simpley when you dont want to change the data, you want to work on some fixed record/data
+
+
+x = 0.125
+print("tuple 1 : ", x.as_integer_ratio()) #returns multiple values i.e here numerator and denominator
+
+#or
+
+numerator , denominator = x.as_integer_ratio()
+print("tuple2 numerator: ", numerator , "denominator : ", denominator)
+
+#suppose we want to swap two variables, but we dont want to use a third variable,so, we can do it in one line using a tuple:
+a = 10
+b = 20
+a,b = b,a
+print("tuple swap a= ", a,"b = ", b)
