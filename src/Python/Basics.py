@@ -559,3 +559,158 @@ print("estimate avg profit : ", estimate_average_slot_payout(5))
 """Strings and Dictionaries"""
 
 
+#Strings
+##One place where the Python language really shines is in the manipulation of strings. This section will cover some of Python's built-in string methods and formatting operations.
+
+#Such string manipulation patterns come up often in the context of data science work.
+
+x = 'Pluto is a planet'
+y = "Pluto is a planet"
+print("strings : ",x == y)
+
+print("Pluto's a planet!")
+print('My dog is named "Pluto"')
+
+print('Pluto\'s a planet!')  #escape character
+
+"""
+The table below summarizes some important uses of the backslash character.
+
+What you type...	What you get	example	print(example)
+\'	'	'What\'s up?'	What's up?
+\"	"	"That's \"cool\""	That's "cool"
+\\	\	"Look, a mountain: /\\"	Look, a mountain: /\
+\n	
+"1\n2 3"	1
+2 3
+"""
+
+hello = "hello\nworld"
+print(hello)
+
+triplequoted_hello = """hello
+world"""
+print(triplequoted_hello)
+triplequoted_hello == hello
+
+
+
+#The print() function automatically adds a newline character unless we specify a value for the keyword argument end other than the default value of '\n':
+
+print("hello4")
+print("world4")
+print("hello4", end='')
+print("pluto4", end='')
+
+
+
+#Strings are sequences
+#Strings can be thought of as sequences of characters. Almost everything we've seen that we can do to a list, we can also do to a string.
+
+# Indexing
+planet = 'Pluto'
+print("string5 : ",planet[0])
+
+# Slicing
+print("string5 : ",planet[-3:])
+
+# How long is this string?
+print("string5 : ",len(planet))
+
+# Yes, we can even loop over them
+print("string5 : ",[char+'! ' for char in planet])
+
+
+
+#But a major way in which they differ from lists is that they are immutable. We can't modify them.
+
+#planet[0] = 'B'
+# planet.append doesn't work either
+
+
+##String methods
+
+# ALL CAPS
+claim = "Pluto is a planet!"
+print(claim.upper())
+
+# all lowercase
+print(claim.lower())
+
+# Searching for the first index of a substring
+print(claim.index('plan'))
+
+print(claim.startswith(planet))
+
+# false because of missing exclamation mark
+print(claim.endswith('planet'))
+
+
+
+#Going between strings and lists: .split() and .join()¶
+#str.split() turns a string into a list of smaller strings, 
+#breaking on whitespace by default. 
+#This is super useful for taking you from one big string to a list of words.
+
+words = claim.split()
+print("words : ", words)
+
+
+#Occasionally you'll want to split on something other than whitespace:
+name = "Harsh-Veer-Nirwan"
+
+first, middle, last = name.split("-")
+
+print(first)   # Harsh
+print(middle)  # Veer
+print(last)    # Nirwan
+
+#str.join() takes us in the other direction, 
+# sewing a list of strings up into one long string, 
+# using the string it was called on as a separator.
+
+print("jon : ", '/'.join([first, middle, last]))
+
+# Yes, we can put unicode characters right in our string literals :)
+print(' 👏 '.join([word.upper() for word in words]))
+
+
+
+#Building strings with .format()
+#Python lets us concatenate strings with the + operator.
+
+print(planet + ', we miss you.')
+
+#If we want to throw in any non-string objects, 
+# we have to be careful to call str() on them first
+
+
+position = 9
+print(planet + ", you'll always be the " + str(position) + "th planet to me.")
+
+#This is getting hard to read and annoying to type. str.format() to the rescue.
+print("{}, you'll always be the {}th planet to me.".format(planet, position))
+
+"""
+So much cleaner! We call .format() on a "format string", where the Python values we want to insert are represented with {} placeholders.
+
+Notice how we didn't even have to call str() to convert position from an int. format() takes care of that for us.
+"""
+
+pluto_mass = 1.303 * 10**22
+earth_mass = 5.9722 * 10**24
+population = 52910390
+#         2 decimal points   3 decimal points, format as percent     separate with commas
+print("{} weighs about {:.2} kilograms ({:.3%} of Earth's mass). It is home to {:,} Plutonians.".format(
+    planet, pluto_mass, pluto_mass / earth_mass, population,
+))
+
+
+
+# Referring to format() arguments by index, starting from 0
+s = """Pluto's a {0}.
+No, it's a {1}.
+{0}!
+{1}!""".format('planet', 'dwarf planet')
+print(s)
+
