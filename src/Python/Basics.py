@@ -714,3 +714,56 @@ No, it's a {1}.
 {1}!""".format('planet', 'dwarf planet')
 print(s)
 
+
+
+
+
+############## Dictionaries ###########
+#this maps very directly to an Apex Map.
+
+numbers = {
+    'one': 1,
+    'two': 2,
+    'three': 3,
+}
+
+#In this case 'one', 'two', and 'three' are the keys, and 1, 2 and 3 are their corresponding values.
+
+#Values are accessed via square bracket syntax similar to indexing into lists and strings.
+
+print(numbers['one'])
+
+#We can use the same syntax to add another key, value pair
+
+numbers['eleven'] = 11
+print(numbers)
+
+#Or to change the value associated with an existing key
+numbers['one'] = 'Pluto'
+print(numbers)
+
+#Python has dictionary comprehensions with a syntax similar to the list comprehensions
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+planet_to_initial = {planet: planet[0] for planet in planets}
+print(planet_to_initial)
+
+#The in operator tells us whether something is a key in the dictionary
+print('Saturn' in planet_to_initial)
+
+#A for loop over a dictionary will loop over its keys
+
+for k in numbers:
+    print("{} = {}".format(k, numbers[k]))
+
+
+#We can access a collection of all the keys or all the values with dict.keys() and dict.values(), respectively.
+# Get all the initials, sort them alphabetically, and put them in a space-separated string.
+print(' '.join(sorted(planet_to_initial.values())))    
+
+
+
+#The very useful dict.items() method lets us iterate over the keys and values of a dictionary simultaneously. 
+# (In Python jargon, an item refers to a key, value pair)
+
+for planet, initial in planet_to_initial.items():
+    print("{} begins with \"{}\"".format(planet.rjust(10), initial))
