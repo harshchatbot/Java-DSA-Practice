@@ -535,12 +535,16 @@ def estimate_average_slot_payout(n_runs):
         total_profit += net_profit  # this += is just shorthand of total_profit = total_profit + net_profit
         
     Avg_profit = total_profit / n_runs
-    
+
     return Avg_profit    
 
 
 print("estimate avg profit : ", estimate_average_slot_payout(5))
 
+
+#here we did mistake in naming convention :
+#Avg_profit should be avg_profit as in python
+#Python variable naming convention is generally snake_case with lowercase letters.
 
 
 
