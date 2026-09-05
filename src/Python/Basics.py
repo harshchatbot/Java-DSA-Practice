@@ -533,7 +533,8 @@ def estimate_average_slot_payout(n_runs):
         payout = play_slot_machine()
         net_profit = payout - 1
         total_profit += net_profit  # this += is just shorthand of total_profit = total_profit + net_profit
-        Avg_profit = total_profit / n_runs
+        
+    Avg_profit = total_profit / n_runs
     
     return Avg_profit    
 
