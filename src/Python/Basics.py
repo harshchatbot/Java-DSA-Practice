@@ -134,6 +134,8 @@ print("Guess now ? ",True or (True and False))
 #Booleans are most useful when combined with conditional statements, 
 # using the keywords if, elif, and else.
 
+
+#def is a Python keyword meaning define a function.
 def positive_or_negative(x):
     if x == 0:
         print(x , " Is Zero")
@@ -334,3 +336,221 @@ a = 10
 b = 20
 a,b = b,a
 print("tuple swap a= ", a,"b = ", b)
+
+
+
+
+"""Loops and List Comprehensions"""
+
+#Loops are a way to repeatedly execute some code.
+
+for planet in planets:
+    print(planet, end=' ') # prints on same line as end=''
+
+print()   # move to next line
+
+#The for loop specifies
+
+#the variable name to use (in this case, planet)
+#the set of values to loop over (in this case, planets)
+
+#You can even loop through each character in a string:
+
+
+text = 'steganograpHy is the practicE of conceaLing a file, message, image, or video within another fiLe, message, image, Or video.'
+
+# print all the uppercase letters in s, one at a time
+for char in text:
+    if char.isupper():
+        print(char, end=' ')
+
+print()   # move to next line
+
+
+#range()
+#range() is a function that returns a sequence of numbers. It turns out to be very useful for writing loops.
+
+#For example, if we want to repeat some action 5 times:
+
+for i in range(5):
+    print("lets loop this 5 times : ", i)
+
+
+
+#while loops
+#The other type of loop in Python is a while loop, which iterates until some condition is met:
+
+i = 0
+while i < 5:
+    print("while looping : ",i)
+    i += 1  # i = i + 1
+
+
+######## List comprehensions
+
+#List comprehension = a short way to create a new list using a loop.
+
+#one way of doing this
+squares = []
+for sq in range(5):
+    squares.append(sq**2)
+print("squares : ", squares)  
+
+
+#now making this shorted using list comprehensions
+
+squares2 = [sq**2 for sq in range(5)]
+print("squares2 : ", squares2)  
+
+#We can also add an if condition:
+
+squares3 = [sq**2 for sq in range(5) if sq <= 3]
+print("squares3 : ", squares3)  
+#better formatting for visibility
+
+print([
+    sq**2
+    for sq in range(5)
+    if sq <= 2
+])
+
+
+
+###########  Zen of Python  #########
+
+#The Zen of Python is a collection of 19 "guiding principles" for writing computer programs that influence the design of the Python programming language.
+#[1] Python code that aligns with these principles is often referred to as "Pythonic".[2]
+
+nums = [5,8,9,3,7,2,1]
+def has_lucky_number(nums):
+    """Return whether the given list of numbers is lucky. A lucky list contains
+    at least one number divisible by 7.
+    """
+    for num in nums:
+        print("num : ", nums.index(num))
+        if num % 7 == 0:
+            return True
+        
+
+    # after loop finishes
+    return False
+
+print("has_lucky_number : ", has_lucky_number(nums))
+
+
+
+"""
+R and Python have some libraries (like numpy and pandas) 
+compare each element of the list to 2 (i.e. do an 'element-wise' comparison) 
+and give us a list of booleans like [False, False, True, True].
+
+Implement a function that reproduces this behaviour, 
+returning a list of booleans corresponding to whether the corresponding element 
+is greater than n.
+"""
+
+def elementwise_greater_than(L, thresh):
+    """Return a list with the same length as L, where the value at index i is 
+    True if L[i] is greater than thresh, and False otherwise.
+    
+    >>> elementwise_greater_than([1, 2, 3, 4], 2)
+    [False, False, True, True]
+    """
+    result = []
+    for i in L:
+        if i > thresh:
+            result.append(True)
+        else:
+            result.append(False)    
+
+    #return complete list once the loop finishes
+    return result
+        
+print("elementwise_greater_than : ", elementwise_greater_than([1, 2, 3, 4], 2))        
+
+
+#And here's the list comprehension version:
+
+def elementwise_greater_than2(L2, thresh2):
+    return [i > thresh2 for i in L2]
+
+
+print("elementwise_greater_than2 : ", elementwise_greater_than2([1, 2, 3, 4], 2))   
+
+
+
+
+
+
+##
+
+meals = ["Pizza", "Burger", "Burger", "Pasta"]
+
+def menu_is_boring(meals):
+    """Given a list of meals served over some period of time, return True if the
+    same meal has ever been served two days in a row, and False otherwise.
+    """
+    for i in range(len(meals) - 1):
+        if meals[i] == meals[i+1]:
+            return True
+    return False
+
+print("meals : ", menu_is_boring(meals))
+
+
+
+
+
+####Monte Carlo method
+#Next to the Blackjack table, the Python Challenge Casino has a slot machine. 
+#You can get a result from the slot machine by calling play_slot_machine(). 
+# The number it returns is your winnings in dollars. Usually it returns 0. 
+# But sometimes you'll get lucky and get a big payday. Try running it below:
+#each play costs $1
+
+
+import random
+
+def play_slot_machine():
+    outcomes = [0, 0, 0, 0, 2, 5, 10]
+    return random.choice(outcomes)
+
+
+
+def estimate_average_slot_payout(n_runs):
+    """Run the slot machine n_runs times and return the average net profit per run.
+    Example calls (note that return value is nondeterministic!):
+    >>> estimate_average_slot_payout(1)
+    -1
+    >>> estimate_average_slot_payout(1)
+    0.5
+    """
+    #think of this in 4 steps
+    total_profit = 0 #store total profit
+
+    #run machine n_runs times
+    for i in range(n_runs):
+        payout = play_slot_machine()
+        net_profit = payout - 1
+        total_profit += net_profit  # this += is just shorthand of total_profit = total_profit + net_profit
+        Avg_profit = total_profit / n_runs
+    
+    return Avg_profit    
+
+
+print("estimate avg profit : ", estimate_average_slot_payout(5))
+
+
+
+
+
+
+
+
+
+
+
+
+"""Strings and Dictionaries"""
+
+
