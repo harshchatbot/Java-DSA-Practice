@@ -859,7 +859,7 @@ def multi_word_search(doc_list, keywords):
     """
     result = {}
     for keyword in keywords:
-        matches = word_search(["The Learn Python Challenge Casino.", "They bought a car from casino", "They went to Casinoville"] , keyword)
+        matches = word_search(doc_list, keyword)
 
         # store in dictionary
         result[keyword] = matches
