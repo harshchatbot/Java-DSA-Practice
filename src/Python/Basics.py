@@ -767,3 +767,106 @@ print(' '.join(sorted(planet_to_initial.values())))
 
 for planet, initial in planet_to_initial.items():
     print("{} begins with \"{}\"".format(planet.rjust(10), initial))
+
+
+
+
+#find length below ?
+a = "" #empty string
+#length = 0    
+print(len(a))  #0
+
+#The empty string has length zero. 
+# Note that the empty string is also the only string that 
+# Python considers as False when converting to boolean.
+
+
+c = 'it\'s ok'
+print(len(c))  #7
+
+#note that the backslash is not part of the string, so it doesn't contribute to its length.
+
+#d = """hey"""
+#length = 3
+
+#e = '\n'
+#length = 1 The newline character is just a single character! (Even though we represent it to Python using a combination of two characters.)
+
+
+#Q
+
+def is_valid_zip(zip_code):
+    """Returns whether the input string is a valid (5 digit) zip code
+    """
+    code_length = len(zip_code)
+    if code_length == 5 and zip_code.isdigit():
+        return True
+    else:
+        return False
+
+print(is_valid_zip('12345'))  #True
+print(is_valid_zip('1234x'))  #False
+
+#print(help(str.isdigit))
+
+
+
+#Q
+
+def word_search(doc_list, keyword):
+    """
+    Takes a list of documents (each document is a string) and a keyword. 
+    Returns list of the index values into the original list for all documents 
+    containing the keyword.
+
+    Example:
+    doc_list = ["The Learn Python Challenge Casino.", "They bought a car from casino", "Casinoville"]
+    >>> word_search(doc_list, 'casino')
+    >>> [0]
+    """
+    
+    result = []
+    for i in range(len(doc_list)):
+        words = doc_list[i].lower().split() #step1 convert to lower case and split into words
+        for word in words:
+            clean_word = word.strip('.,!?') #step2 remove punctuation from each word, so "casino." becomes "casino".
+            print("clean_word: ", clean_word)
+            if clean_word == keyword:
+                result.append(i)
+
+
+    return result
+
+
+
+print("word_search : ", word_search(["The Learn Python Challenge Casino.", "They bought a car from casino", "Casinoville"], 'casino'))  # [0]     
+
+
+
+
+#this time we need a dictionary
+
+def multi_word_search(doc_list, keywords):
+    """
+    Takes list of documents (each document is a string) and a list of keywords.  
+    Returns a dictionary where each key is a keyword, and the value is a list of indices
+    (from doc_list) of the documents containing that keyword
+
+    >>> doc_list = ["The Learn Python Challenge Casino.", "They bought a car and a casino", "Casinoville"]
+    >>> keywords = ['casino', 'they']
+    >>> multi_word_search(doc_list, keywords)
+    {'casino': [0, 1], 'they': [1]}
+    """
+    result = {}
+    for keyword in keywords:
+        matches = word_search(["The Learn Python Challenge Casino.", "They bought a car from casino", "They went to Casinoville"] , keyword)
+
+        # store in dictionary
+        result[keyword] = matches
+
+    return result    
+
+
+
+
+print("multi_word_search : ", multi_word_search(["The Learn Python Challenge Casino.", "They bought a car from casino", "Casinoville"], ['casino', 'they']))  # {'casino': [0, 1], 'they': [1]}
