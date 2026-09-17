@@ -168,3 +168,24 @@ def test2(t2):
 
 print(test2([1,2,3,4,8]))  
 
+
+
+############### DSA ##################
+
+#DSA Pattern #1: Two Sum (the most common interview opener, 
+#and the foundation of hash-map-based problems)
+
+
+## hashing , important----
+#python has built-in hash() function
+
+print("hashing : ", hash("Harsh"))  # 4895245337058191612  some large numb
+print(hash(42)) # 42  (small integers often hash to themselves)
+print(hash((1,2)))   # a large number — tuples are hashable, as you learned , -3550055125485641917
+
+#but lists are not hashable
+#print(hash([1,2])) #TypeError: unhashable type: 'list'
+
+
+
+
