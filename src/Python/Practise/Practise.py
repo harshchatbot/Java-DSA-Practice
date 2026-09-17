@@ -187,5 +187,83 @@ print(hash((1,2)))   # a large number — tuples are hashable, as you learned , 
 #print(hash([1,2])) #TypeError: unhashable type: 'list'
 
 
+#Seeing why it makes lookup fast — a mini side-by-side
 
+#list vs set
+
+import time
+
+big_list = list(range(1_000_000))
+big_set = set(range(1_000_000))
+
+start = time.time()
+
+999_999 in big_list # has to scan up to a million items
+elaspes_ms = (time.time() - start) * 1000
+print("list lookup : " , elaspes_ms)
+
+start = time.time()
+999_999 in big_set # hash tells it exactly where to look
+elaspes_ms = (time.time() - start) * 1000
+print("set lookup : ", elaspes_ms)
+
+"""Now it's readable at a glance: list lookup ≈ 8.93 ms, 
+set lookup ≈ 0.0012 ms — roughly 7500x faster for the set, same data size, 
+same check. That gap is the entire reason hashing exists as a technique, and 
+it's what you'll lean on constantly in DSA."""
+
+
+#now
+# List look up Time complexity is O(n) , as we had to check 
+#every element one by one until we find the match
+
+#Space complexity - extra for the operation itself so its O(1)
+
+#Set lookup - Time was O(1) as hash function knwe where to look directly
+#so doesent matte if set has 1 or 1mn items
+#Space - extra for the operation itself O(1) same reasoning
+
+
+
+
+
+
+"""DSA Pattern #1: Two Sum (the most common interview opener, 
+and the foundation of hash-map-based problems)
+
+Problem: Given a list of numbers and a target, 
+return the indices of the two numbers that add up to the target. 
+Assume exactly one solution exists, 
+and you can't use the same element twice.
+
+python
+nums = [2, 7, 11, 15]
+target = 9
+# 2 + 7 = 9, so answer is [0, 1] (their indices)"""
+
+
+#note - use enumerate() instead of .index()
+#enumerate() — get index + value together while looping
+
+nums = [2, 7, 11, 15]
+
+for idx , val in enumerate(nums):
+    seen = {}
+    print("enumerate index: ", idx,"enumerate val : ", val)
+    seen[val] = idx  #this is like mapVar.put(key, value) in Apex,
+
+def two_sum(numbs , target):
+    seen = {}
+    for idx,val in enumerate(numbs):
+        
+        if (target - val) in seen:
+            return [seen[target - val] , idx]
+
+        seen[val] = idx  #this is like mapVar.put(key, value) in Apex,
+
+
+#print(two_sum([2, 7, 11, 15], 9))
+print(two_sum([3,3], 6))
+
+##that's a fully correct, O(n) time / O(n) space solution to Two Sum
 
