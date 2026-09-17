@@ -267,3 +267,83 @@ print(two_sum([3,3], 6))
 
 ##that's a fully correct, O(n) time / O(n) space solution to Two Sum
 
+
+#quick reverse string
+s = "Hello World"
+print("rev st : ", s[::-1])
+
+
+
+
+#####Write a function that checks whether a given string 
+# is a palindrome (reads the same forwards and backwards), 
+# ignoring case and spaces.
+
+#strings r immutable
+
+def is_palindrom(s):
+    s = s.lower().replace(" ","")
+    return s[::-1] == s
+
+print(is_palindrom("racecar"))                          # True
+print(is_palindrom("A man a plan a canal Panama"))       # True
+print(is_palindrom("hello"))                              # False
+
+
+
+
+##Valid Anagram
+
+#Problem: Given two strings s and t, 
+# return True if t is an anagram of s 
+#(uses exactly the same letters, same counts, 
+# just rearranged), otherwise False.
+
+
+#approach 1 - sort and compare
+#Sort approach (what you wrote): time complexity is O(n log n) — sorting dominates the cost.
+def is_anagram(s,t):
+    s = s.lower().replace(" ","")
+    t = t.lower().replace(" ","")
+
+    return sorted(s) == sorted(t) 
+
+
+print(is_anagram("listen", "silent"))   # True  — same letters rearranged
+print(is_anagram("rat", "car"))          # False — different letters
+print(is_anagram("aacc", "ccac"))        # False — same letters, but wrong counts (three c's vs two)
+
+
+
+#approach 2 - Frequency map (Counter)
+
+from collections import Counter
+
+def is_anagram2(s,t):
+    s = s.lower().replace(" ","")
+    t = t.lower().replace(" ","")
+
+    return Counter(s) == Counter(t)
+
+
+print(is_anagram("listen", "silent")) 
+
+"""
+VALID ANAGRAM — two approaches
+
+Approach 1: Sort-and-compare
+    sorted(s) == sorted(t)
+    Time:  O(n log n)  — sorting dominates
+    Space: O(n)         — sorted() creates new lists
+
+Approach 2: Frequency map (BETTER — use this one)
+    Counter(s) == Counter(t)
+    Time:  O(n)   — one pass per string, no sorting
+    Space: O(n)   — but often less in practice (only unique chars stored)
+
+RULE OF THUMB: comparing "same elements/counts" between two collections?
+Reach for a hash map (dict/Counter) before sorting — usually faster.
+"""
+
+
+
