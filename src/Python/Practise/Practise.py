@@ -347,3 +347,35 @@ Reach for a hash map (dict/Counter) before sorting — usually faster.
 
 
 
+
+
+##Contains Duplicate
+
+#Problem: Given a list of integers, return True 
+# if any value appears at least twice, 
+#False if every element is distinct.
+
+def contains_duplicate(nums):
+    seen = set()
+
+    for num in nums:
+        if num in seen:  #1,2,3,
+            return True
+        seen.add(num)
+
+    return False
+
+
+print(contains_duplicate([1,2,3,1]))
+print(contains_duplicate([1,2,3,4]))   # expect False
+
+
+
+
+
+
+##Group Anagrams
+
+#Problem: Given a list of strings, group the anagrams together. 
+# Return a list of groups (each group is a list of strings 
+# that are anagrams of each other).
