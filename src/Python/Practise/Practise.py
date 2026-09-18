@@ -379,3 +379,24 @@ print(contains_duplicate([1,2,3,4]))   # expect False
 #Problem: Given a list of strings, group the anagrams together. 
 # Return a list of groups (each group is a list of strings 
 # that are anagrams of each other).
+
+
+#Time complexity: O(n · k log k)
+#Space complexity: O(n · k)
+
+
+def group_anagrams(words):
+    groups = {} #dict
+    #result = groups.setdefault("aet",[]).append("tea")
+    #result = groups.setdefault("aet",[]).append("eat")
+    #print("res : ", result)
+    #print("grp : ", groups)
+
+    for word in words:
+        key = "".join(sorted(word))
+        groups.setdefault(key,[]).append(word)
+        print("ker : ", key)
+    return list(groups.values())    
+              
+
+print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
