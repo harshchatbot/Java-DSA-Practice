@@ -1,0 +1,256 @@
+************************* URL Shortner ************************
+
+
+we try to shorten the big url's for different purposes
+
+eg tinyurl is a site which do this
+
+http://wdfdfdf..long_url... -> [URL shortner] -> gives us short url http:ww.ab1..
+
+now when we click on the short url it actually redirects us to the long or original url only.
+
+now we know how it works so lets go deeper :
+
+-- understanding the problem and we need to define problem scope 
+
+need to discuss with intv 
+
+
+Functional Requirements:
+- what is expectation with this : so its we have a lng url and we need to give a short url and when we click on short url it leads us to the original url only
+- Traffic : daily we ave 100 million url's generated
+- length of short url , how shrt we want : intv : as short as possible
+- allowed characters - intv: num 0-9, small a-z , capital A-Z
+- can we delete or update short url - NO
+  
+
+Non- Funtional Requirements:
+- high availability
+- Scalability
+- Fault Tolerance
+  
+
+Assumptions:
+-there will be 10x read operations  than write operations
+-data stored is of till 10 years
+
+Now lets do,
+Back of envelope Estimation :  
+-Write operations/sec -> in 100mn/24/3600 = 1160 / sec
+-Read operations -> 11600 / sec
+-Data stored -> 100mn url * 365 * 10 -> 365 billion records
+size of these records ??? -> average url length is 100 bytes
+therefore 365 bn *100 bytes = 36.5 TB data will be required over 10 years
+
+
+Now Part 2 - High Level Design
+
+2 operations 
+1.Shorten the url
+2.Get original url from short url
+
+
+if we design API endpoints for both of them
+
+1.Post api - api/v1/data/shprten - params : longurl
+return : short url
+
+2.Get api - api/v1/shortUrl - return : long url
+
+
+
+Now, we understand url redirecting :
+
+url redirecting status code 301/302
+
+
+301 -> Permanent Redirect , browser saves url in cache
+
+-Tells the browser: "this short URL will ALWAYS point to this long URL — remember it."
+-Browsers cache this — next time the user clicks the same short link, the browser redirects them without even asking your server(url shortner server), using its cached memory.
+
+use this when we want to reduce the server load
+
+302 - Temporary redirect
+
+- Browsers do NOT cache this — every single click hits your server again to ask "where do I redirect this time?"
+
+use this to keep a track of click rate
+
+
+
+URL Shortening...........
+
+Map - <shoprt url , long url>
+
+long url -> hash -> https:..shorturl/hsh-value
+
+
+Now, how to generate this hash value?
+
+What is hash function?
+
+our decided -> num 0-9, small a-z , capital A-Z
+                10 +      26      +   25   =     62 characters
+
+so we will utilize these characters to create short url
+
+now we need 365 billion url's to be generated
+
+now, we need to decide length of hash value
+Tot char -> 62
+
+ok so what should be our hash length?
+
+lets say hash length is 1 so we can generate :
+we have 62 characters so url's can be
+62 * 1 = 62
+/0 , /1 , /a , /b ...
+
+if hash length is 2
+/01 , /02 ...
+
+62 ^ 2 (62 power 2) = 3844
+
+
+62 ^ 3 = 23800
+
+62 ^ 4 = 
+
+.
+.
+.
+.
+62 ^ 7 = 3.5 Tillion
+
+ so our shortest hash length should be atleast 7 characters
+
+
+ Now, there a 2 ways for hash value generation
+
+ 1. hash + Collision resoloution
+ 2. Base 62 method
+
+
+
+Hash + collosion resoloution :
+
+standard hash functions like 
+1.MD5 - takes 128 (32 charcs)
+2.SHA-1 - produce 160 bit hash
+3.CRC32 - 32 bit
+
+we want shortest hash function which gives us 7 characters so crc32 is closest.
+
+
+long url -> crc32 hash  ->
+
+so lets say it is producing some hash 
+ 5ab5402gfg6565s3
+ so lets say we took the first 7 only as we want that shortest 5ab5402 but this can be redundant , can lead to duplicacy as some other url first 7 digitas can also be same correct, there will be collision?
+ so to solve this we use collision resoloution
+
+
+so we add some oredefined letters in addition to those 7 letter and again sent to hash function.
+
+here we check first is the short url we received is it present in db by doing a "Query"?
+if no then save to db and share the short url to client
+
+if yes ?
+then we add predefined string and again set the long url to has function
+
+
+here query to db can be optimized using "Bloom Filters"
+
+
+2.Base 62 conversion:
+
+long rl -> any hash function -> hash value -> base 62 conversion -> short url
+
+0-9 , a-z , A-Z
+10  +  26  + 24  = 62
+
+0       9 10        35 36       62
+---------------------------------
+0       9 a         z A         Z
+
+
+so lets say we have some hash value like 11157 and its base 62 conversion is 2TX
+so 2TX will be appended to standard short url
+
+
+
+
+Data Model....................
+
+1.We can use In-memory Map  -> <ShortUrl , LongUrl>
+ so we cannot store 365 bn values in map so we definately need a database
+
+we can use a simple tradation database
+where we  will be having a table and id , shorturl , longurl columns
+
+
+
+Lets do Design Deep Dive ................
+
+-for url shortening
+longUrl - > is in db ? if yes -> return shortUrl
+                | if No?
+    generate hash value
+                |
+        convert to hash value to short url  
+                |
+        short url save to db in form of (id , short url , long url) -> then we return the response to client
+
+
+
+Deep dive of url shortner
+
+
+
+
+
+
+
+Now, URI redirecting deep dive
+
+
+       GET: https/dfdfd/abcd
+user ------------------------>  <- load balancer ->    <- server
+                             <-                   |             |
+                                            cache         database
+
+
+
+
+
+Overall High Level Design.................................
+
+
+diagram here
+
+
+so this was HLD
+
+
+
+wrap up , you can discuss with the intv
+-Rate limitor 
+-Scaling
+-Monitoring 301,302
+-Non functional aspects like availability, consistency
+
+
+recap :
+-define scope of problem
+-uri shortening
+getting long url
+hash length requirement
+hash methods hash _ collis , base 62 convrsion
+design
+back of envelop estimation
+why we need db
+data model
+
+
+
