@@ -1,0 +1,386 @@
+************************* Rate Limiter ************************
+
+What is a rate Limiter
+
+            Requests
+client    ----------->         server
+
+
+if client ends too many requests simultaneously , it can crash the server
+
+So rate limiting, limiting the nmber of call you can do.
+
+many companies set limit like 2 requests/sec
+so client will be able to do only 2 requests per second.
+
+Why do we even need a Rate Limiter???
+
+-to prevent resource starvation which can cause DOS(denial of service attack)
+-to reduce the cost
+-to prevent server overload
+
+
+Interview--------------------
+
+Intv asked us to design a rate limiter :
+
+Step1 : Understand the problem and the scope :
+
+ask few questions around it :
+-Where we will set the rate limiter?  /clientside , serverside or in b/w 
+kind ofrate limiter  - intv - serverside
+
+-on what basis rate limiter will be throttled?
+can be added on ip address or any user id or other properties.
+intv - Rate limiter should be flexible enough to add various properties
+
+-Scale?
+it isbuilt for startup  or for large no of audience?
+Intv: large no of audience
+
+-environment - Distributed? Intv: Yes
+
+-Where we will be putting the rate limiter in the desing ,
+like in which place in server?
+like any specific api needs this rate limiting?
+intv: since its a design questions so intv may or may not ans
+
+-When rate limiting happens, user needs to know about this or not? 
+Intv : Yes
+
+
+Always summarize the requirement :
+so what req we got?
+
+since we are talking about large audience so
+there should not be low latency
+it should use lesser memory
+it should be a distributed environment
+high fault tolerance should be there
+accuracy should also be there
+
+
+Step2: High Level Design :
+
+-where to put the rate limiter ?
+
+although in this scenario we will put the rate limiter on server side, just quickly see what overview once
+
+-client side rate limiter
+-server side rate limiter
+-middleware rate limiter
+
+
+Now if we put it on client side?
+- we loose control of rate limiter
+- note: at client site someone can play with it maliciously so thats why it was not a good option
+
+
+The server side, our selected option
+
+                http req
+client        ------------->    Server Side(Application Ser)
+(web app)                      (Rate Limiter)
+(mobile app)
+
+
+
+next is Middleware rate limiter 
+
+        http req    (API Gateway)
+client ---------->  Rate Limiter     --->    Server Side(App Ser)
+(web app)                      
+(mobile app)
+
+
+
+Now, 
+
+lets say rate limiter is set to 2 requests / sec
+
+so client 1/2/3 rd will be blocked by rate limiter
+and it will send a response 429 -> Too many requests
+
+Decision:
+
+how to decide where t put our rate limiter in or app?
+
+so we decided in the server side but where in server?
+it depends on 
+-tech stack
+-api gateway
+-service based
+-business model
+
+
+Now,
+How to design a Rate Limiter?
+
+There are alogrithms
+
+1.Token Bucket
+2.Leaky Bucket
+3.Fixed Window Counter
+4.Sliding Window Log
+5.Sliding Window COunter (mized of fixed and sliding)
+
+
+Token Bucket Algo **********
+
+Amazon, stripe use this for rate limiting their api requests
+
+                    Refiller (to fill the bucket)
+Requests        Bucket(having some capacity, 2 req/s)
+                    |
+condition if we have enough tokens?
+if yes then we process the req and reduce the capacity
+
+if no then drop the request
+
+what all we need?
+-bucket size 
+-refill rate
+
+now our app can have different use cases , so for different scenarios we need different buckets
+
+eg
+1 bucket we can only do 10 posts per sec
+1 bucket for we can make 150 friends per day
+1 bucket we can like only 500 posts per day
+
+so we need 3 buckets
+
+if we based on ip address rate limit then req 1 bucket
+on base of user id then also 1 bucket req
+
+
+Benefits?
+- it i easy to implement
+- it is memory efficient
+- lesser breaches or bucket leaks
+
+cons: it has two params so it is bit hard to 'Tune'
+
+
+
+Leaky Bucket Algo **********
+
+similar to token bucket almost
+
+
+                    Refiller (to fill the bucket)
+Requests        Bucket(having some capacity, 100 req/s)
+                    |
+                  if bucket/queue is full drop re , if no then process the req
+
+requests will be processed at the fixed rate, so fixed rate processing
+
+here queue act as bucket
+fixed size queue we have here and accordingly req are processed
+
+
+Params:
+1.Queue/bucket size
+2.Outflow rate
+
+shopify uses this algo.
+
+Pros:
+-memory efficient
+-fixed rate processing so it has stable outflow rate
+
+cons:
+-to parameters so hard to tune
+-if there is a sale the queue can get quickly get filled
+
+
+Fixed window counter algo **********
+
+it has fixed window where requests are processed.
+
+one major issue : The Edge of time window
+
+Pros:
+-Memory efficient
+-easy to understand
+-Resetting
+
+Cons:
+-EAt the dge of the window no requests are processed
+
+
+
+Sliding Window Log Algo **********
+
+here we log the time stamp of every request and this removes the fixed window edge of the window isse as well
+
+Pros:
+-very accurate
+
+cons:
+-consumes lot of memory cuz of logs
+
+
+Now to fixed both the issues we faced in fix and sliding winoow we have another algo:
+
+
+
+Sliding Window Counter Algo **********
+
+
+
+Pros:
+-memory efficient
+
+cons:
+-since we are rounding off and taking a certain %, its not very accurate
+
+
+
+
+
+-------------- High Level Architecture ---------------
+
+ what we need?
+ 1.Counter - to count number of req's that are coming
+ 2.Check expiry
+ 3.
+
+        http req
+ client --------> Rate Limiter --- Increment the counter 
+                                    (Take counter from Redis store)
+                                    |
+                                    if limit is not reached we send req to api server else drop the req
+ (web app)
+ (mob app)
+
+
+
+--------- Deep-dive into the design --------- 
+
+1.Rules and properties
+2.Distributed environment
+
+Rules can sit in some config file e a .yaml file and there we can list some certain rules and based on that we can decid the rate limiting.
+
+how can we make the rule
+below is our one property or a rule:
+-domain:News feed
+description: 
+{
+    key:likes   #on;y 500 likes/day
+    value:Post
+    ratelimit:
+                unit: day
+                requests: 500
+}
+
+
+
+domain:Post  we can only make 5 post/min
+description:
+        key:userid
+        value:postnumber
+        ratelimit:
+                unit:min
+                requestsperunit:5
+
+
+
+now , another req -> notifying the user
+
+suppose rate limting exceeds and we send 429 as response ot the user.
+
+how user will understand that this is why i got rate limited?
+
+in the API call well have a rate limiter header.
+x_ratelimiter_remaining
+x_ratelimiter_totallimit
+x_ratelimiter_retry_after
+
+
+
+client --> rate limiter - add a cache (fetch the rule) - > cache is supported by some workers and config files
+
+
+now call on redis db to check the counter.
+if counter passess/success then we send req to api server
+else
+if fails
+we then inform the user 429 and drops the req
+
+but if want to process the req later on then we can put the req into some message queue 
+if the req is not to process droped requests then dont use it
+
+
+Distributed environment.......
+
+if there are multiple servers
+
+                                S1
+                rate limiter    S2
+                                S3
+
+
+in a distributed environment we have to handle certain issues:
+1.Race condition
+2.Synchronization issue
+
+
+race condition :
+
+                (RL went to fetch 
+                counter at same timefrom redis db)
+client1 -        Rate Limiter  -         
+client2  -
+        made req simultaneously
+
+
+there are different strategies to solve race condition
+
+
+Synchronization :
+
+suppose we have millions of users
+so there will be multiple servers and there will be multiple rate limiters
+
+
+c1  - RL1  -   Server1
+      RL2  -   Server2
+
+
+so there can be amguity b/w rl1 and rl2
+
+one solution can be sticky session but its not advisable
+
+another sol can be centralized data store
+
+
+c1  - RL1  -   Central DB
+      RL2  -   
+
+
+Another issue in distributed env can be performance
+
+user is sitting in US
+and suppose server is in India in data center
+
+so we have to choose the nearest one to the user
+
+
+Monitoring:
+
+we can discuss on the metrics in the interview
+-rules
+-counter working fine
+-expiry working fine
+
+
+
+Wrap-Up:
+
+-distributed env
+-discuss more on algo
+-discuss more about caches and redis db
+
+
