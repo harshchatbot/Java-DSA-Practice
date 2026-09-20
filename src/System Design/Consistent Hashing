@@ -1,0 +1,123 @@
+************************* Consistent Hashing ************************
+
+Use case -
+-Scaling
+Vertical 
+and 
+horizontal - add db1,db2, or similarly for servers adding lots of servers
+
+
+now how to distribute the data among them?
+
+So consistent hashing helps us to distribute data evenly
+
+
+
+Suppose we are designing a system , initially it was having 4 servers
+
+so one way to evenly distribut
+
+total data / no. of servers = data/4
+
+so every data must be having some key (like id)
+
+key     hash    hash%4     (hash remainder by 4 or n servers)
+key1   103212    1 
+
+so this can be one of the techniques to distribute the data evenly
+when server pool/size is fixed
+
+so we can simple do serverindex % 4
+
+
+
+If Server Pool is not fixed then?????????
+
+            X
+    s1  s2  s3  s4
+
+suppose s3 goes down...
+
+so then first thing is we need to change the jey distribution function -> serverindex % 4
+
+so 2 problem come in this approach
+1.removal of server is difficult as our hash function is according to fixed server and if anything changes everything needs to be change
+2.add a server is also dfficult
+
+
+what is the solution then so that overall system doesent get disturbed the least????
+
+
+SO consistent hashing will help here...
+
+suppose we take a hash function SHA-1
+
+so intead of a straight line or array like
+
+
+------------------
+
+we will suppose are servers are in a ring formation
+and our hash value is also on the ring eg hash value = xa----xa
+
+              xz-xa
+                S1
+            S8       S2
+       xm S7            S3 xh
+            S6       S4
+                S5        
+                xi
+
+so key placement is along the ring
+
+
+
+Now , lets rectify the problems we were fcing earlier
+adding a server and
+removing a server
+
+1.Adding a server :
+
+lets say i add a new server b/w amm s1 and s2 so values b/w s1 and s2 only will get affected others will remain intact.
+
+so only a set of keys which needs to be re-mapped
+
+2.Remove a server :
+if we remove some server so again only the conected server will get the load of it but others remain intact
+
+
+Now, there are still 2 issues :
+
+1.There will be 'non-uniformity' in the key distribution
+2.Partition size of data distribution
+
+so we try to minimize these partitions size , the gap b/w like s1 and s2
+
+-either by placing more servers - but this will be costly
+so we will palce some virtual servers
+
+so the more partition we do, the data distribution will become more even. 
+
+Hence thats why we introduced the concept of 'Virtual Nodes'
+
+so along with the main servers we place virtual nodes which are having the information of data partition of each server.
+
+so which partition of keys each server is having is kept by these virtual nodes.
+
+so we can look for a key to the nearest server.
+
+
+Benefits of consistent hashing:
+-minimum key redistribution
+-easy to scale horizontally
+-hotspotting is mitigated
+
+
+
+
+
+
+
+
+
+
