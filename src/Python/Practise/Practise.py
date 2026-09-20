@@ -493,3 +493,89 @@ most_common(k) → O(n log k) internally (it uses a heap under the hood when k i
 better than fully sorting (O(n log n)) when k is small
 Overall: O(n log k) time, O(n) space"""
 
+
+
+
+
+
+
+
+#again some practise basics
+
+#Round 1: Indexing & slicing (list)
+nums = [10, 20, 30, 40, 50]
+
+"""
+Try these, predict the output before running:
+
+Get the first element
+Get the last element (without using the number 4 — think negative indexing)
+Get everything except the first element
+Get everything except the last element
+Get the middle three elements ([20, 30, 40])
+"""
+
+print("Get First Element : ", nums[0])
+print("Get last Element : ", nums[-1])
+print("Get everything except 1st Element : ", nums[1:])
+print("Get everything except last Element : ", nums[:-1])
+print("Get middle 3 Elements : ", nums[1:-1])
+    
+
+
+#Round 2: Dict — keys, values, items
+person = {"name": "Harsh", "age": 40, "role": "Lead"}
+
+
+"""Try these:
+
+Get only the keys (as their own collection)
+Get only the values
+Get both, as key-value pairs together
+Loop through and print each key and value on its own line
+Get the value for "role" — but safely, 
+in a way that won't crash if "role" didn't exist 
+(hint: there's a dict method for this, different from setdefault)
+"""
+
+
+print("only keys : ", person.keys())
+print("only values : ", person.values())
+print("get both keys & values : ", person.items())
+
+for key,value in person.items():
+    print(f"{key}: {value}")
+
+
+    
+print("get value of role safely : ", person.get("role", "Not Assigned"))
+
+
+#Round 3: Set — basics + formatting
+
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+
+
+"""
+Try these:
+
+Elements in both a and b (intersection)
+Elements in a or b, combined, no duplicates (union)
+Elements in a but not in b
+Convert a set back into a sorted list
+"""
+
+print(a & b)  # operator form
+#or
+print(a.intersection(b))  # method form
+
+print(a | b)
+#or
+print(a.union(b))
+
+print(a-b) # operator form — elements in a, NOT in b
+#or
+print(a.difference(b)) # method form — same thing
+
+print(sorted(a))
