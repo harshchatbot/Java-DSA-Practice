@@ -445,3 +445,21 @@ for w in words:
     groups.setdefault(key, []).append(w)
 
 print("groups : ", f'{groups}')
+
+
+#4. "".join(...) — turn this list of characters into one string
+chars = ['p','y','t','h','o','n']
+# your line here → "python"
+
+print(f'{"".join(chars)}')
+
+
+#5 left — plain loop, sum all even numbers (no comprehension, just for + if):
+nums = [1,2,3,4,5,6,7,8]
+total = 0
+# expected: 20
+for n in nums:
+    if(n % 2 == 0):
+        total = n + total
+        
+print("total : ", f'{total}') 
