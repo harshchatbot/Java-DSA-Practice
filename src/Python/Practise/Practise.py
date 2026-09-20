@@ -463,3 +463,33 @@ for n in nums:
         total = n + total
         
 print("total : ", f'{total}') 
+
+
+
+
+#Top K Frequent Elements
+#Problem: Given a list of numbers and k, return the k most frequent elements.
+
+
+
+
+from collections import Counter
+
+c = Counter([1,1,1,2,2,3])
+print(c.most_common())
+print(c.most_common(2))
+
+def top_k_frequent(nums, k):
+    c = Counter(nums)
+    print("here : ", c)
+    print("here 2: ", c.most_common())
+    return [item[0] for item in c.most_common(k)]
+
+
+print("top k freq : ", top_k_frequent([1,1,1,2,2,3], 2))   # [1, 2]
+
+"""Counter(nums) → O(n)
+most_common(k) → O(n log k) internally (it uses a heap under the hood when k is given) — 
+better than fully sorting (O(n log n)) when k is small
+Overall: O(n log k) time, O(n) space"""
+
