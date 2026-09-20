@@ -400,3 +400,48 @@ def group_anagrams(words):
               
 
 print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+
+
+
+#QUick Practise
+
+#1.1. enumerate — print each fruit with its position, like "0: apple"
+# your loop here
+
+def check_enumerate(fruits):
+
+    check = {}
+    for idx,val in enumerate(fruits):
+        check[idx] = val
+    return check
+
+print("enumerate check : ", check_enumerate(["apple" , "banana","cherry"]))
+
+
+
+#2. Counter — get the frequency count of this list
+# one line to get the frequency count
+
+from collections import Counter
+
+nums = [5,5,5,3,3,1]
+count_freq = Counter(nums)
+print("freq countes test : ", count_freq)
+
+
+
+#3. setdefault — build a dict grouping words by their first letter (no Counter/comprehension, just setdefault + a loop)
+
+words = ["cat", "car", "dog", "deer"]
+groups = {}  #empty dict
+# expected: {'c': ['cat','car'], 'd': ['dog','deer']}
+
+#dict.setdefault(key, default)
+#.append()
+
+for w in words:
+    print(f'{w}')
+    key = w[:1]    #first letter of words
+    groups.setdefault(key, []).append(w)
+
+print("groups : ", f'{groups}')

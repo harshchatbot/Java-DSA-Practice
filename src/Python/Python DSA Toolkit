@@ -1,0 +1,46 @@
+"""
+PYTHON DSA TOOLKIT — functions/methods to know cold before problem-solving
+(keep adding to this as new tools come up)
+
+enumerate(iterable)         -> gives (index, value) pairs while looping
+    for idx, val in enumerate(nums): ...
+    Used in: Two Sum
+
+sorted(iterable)            -> returns a NEW sorted list (doesn't sort in place)
+    sorted([3,1,2]) -> [1,2,3]
+    Used in: Group Anagrams, Valid Anagram
+
+Counter(iterable)           -> builds a frequency dict (from collections import Counter)
+    Counter([1,1,2]) -> Counter({1:2, 2:1})
+    Used in: Valid Anagram, Group Anagrams
+
+dict.setdefault(key, default) -> get-or-insert in one call, returns the value either way
+    groups.setdefault(key, []).append(word)
+    Used in: Frequency map, Group Anagrams
+
+"".join(list)                -> combine list of chars/strings into one string
+    "".join(['a','b','c']) -> "abc"
+    Used in: Group Anagrams
+
+s.split(), s.strip(), s.replace(a,b)  -> string cleanup
+    "  hi  ".strip() -> "hi"
+    "a,b,c".split(",") -> ["a","b","c"]
+    Used in: Palindrome check
+
+s[::-1], s[a:b]              -> slicing (reverse, substrings)
+    "hello"[::-1] -> "olleh"
+    "hello"[1:3]  -> "el"
+    Used in: Palindrome check
+
+ord(char)                    -> character to numeric code (a=97, etc.)
+    ord('a') -> 97
+    Used in: character-count approach (Group Anagrams v2)
+
+{expr for item in iterable if cond}   -> set/list/dict comprehension
+    {x for x in nums if x % 2 == 0}
+    Used in: Duplicates, filtering
+
+Counter.most_common(n)       -> top n most frequent items, as (item, count) tuples, sorted by count desc
+    Counter([1,1,1,2,2,3]).most_common(2) -> [(1,3),(2,2)]
+    Used in: Top K Frequent Elements
+"""
