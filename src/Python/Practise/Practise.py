@@ -579,3 +579,39 @@ print(a-b) # operator form — elements in a, NOT in b
 print(a.difference(b)) # method form — same thing
 
 print(sorted(a))
+
+
+
+"""Q1. You receive an unsorted array:
+
+[4, 2, 7, 2, 8, 4, 9, 2]
+
+Return all numbers that occur more than once, 
+but return each duplicate only once. 
+Explain your approach, data structure and 
+time/space complexity. 
+You can write Python or pseudocode."""
+
+def dupli_check(my_list):
+
+    seen = set()  #4,2,7,8,9
+    duplicates = set() #2,4
+    dupliList = []
+
+    for num in my_list:
+        if num in seen:
+            duplicates.add(num)
+            dupliList.append(num)
+        else:
+            seen.add(num)    
+
+    return duplicates,dupliList        
+
+
+
+print("dupli check : ", dupli_check([4, 2, 7, 2, 8, 4, 9, 2]))
+
+#space and time compleity = O(n)
+#cuz If there are n elements, 
+# you must inspect all n elements.
+

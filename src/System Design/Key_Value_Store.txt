@@ -1,0 +1,98 @@
+************************* URL Shortner ************************
+
+key-vale store Database
+its actually designing a database.
+
+it is a non-relational database.
+
+key                 |   Value
+unique identifier       object
+
+
+what operations this key value database can perform?
+-Adding the value (put(key,value)
+-fetch the key (get(key) -> Value
+
+Step1 Understanding the problem and establih the scope.....
+
+-size of key-value pair <10kb
+-Size of data is very big (able to support millions of data)
+-Highly available
+-Highly Scalable (someday we want to increase the size of the database)
+-Consistency -> should be tunable
+-Latency should be low
+
+
+suppose we have a single server so in that case how can we desing.
+
+
+1.SIngle server setup :
+datatype -> inmemory Hashmap
+hashmap<Key,value>
+
+but inmemory is fast but cannot store  lot of data
+so we can use data compression technique to compress data.
+or we remove the old data
+
+
+still we cannot store huge amount of data on a single server so for that we actually need
+'Distributed Key-Value Store'
+
+in distributed env there are multiple servers.
+
+            S1 
+            S2
+            S3
+so data will be read and wrtten from all these servers and suppose one server goes down?
+-so we need something to re-direct the traffic
+-We talked about consistency so that issue can compress-availability also can break
+-communication can break between servers or client and 
+servers so data partiition is another problem
+
+so how to handle these??????
+
+So we need help of 'CAP Theorem' here :
+
+CAP Theorem:
+
+Consistency , Availability , Partition Tolerance
+
+-Consistency : 
+so when multiple servers are involved and client istrying to fetch the data so it is important the he gets the same data everytime.
+
+-Availability :
+whenever client is trying to get data he should get response, even if some nodes/servers are down
+
+-Partition Tolerance :
+s1 - s2 replicating data but suppose connection fails, so even if connection breaks b/w some nodes,  system should continue to operate.
+
+
+so theorem basically says that in order to support 2 of these out of 3 , one should sacrifice.
+
+so any of of below should support based on use case:
+1.CP
+2.CA - its actually ideal but in real world not possible
+3.AP
+
+
+
+Components req tu build store:
+1.Data Partition
+2.Data Replication
+3.Consistency
+4.Inconsistency resoloution
+5.Handle Failures
+6.Writes
+7.Read
+8.System-Architecture
+
+
+
+Data Partition:
+
+
+
+
+
+
+
